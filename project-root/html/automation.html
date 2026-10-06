@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/main.css">
+    <title>Скриптинг и автоматизация &mdash; SysAdmin Notes</title>
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="container">
+            <div class="logo">
+                <span class="logo-mark">SA</span>
+                <span class="logo-text">SysAdmin Notes</span>
+            </div>
+            
+            <input type="checkbox" id="menu-toggle" class="menu-toggle" hidden>
+            <label for="menu-toggle" class="burger" aria-label="Открыть меню">
+                <span></span><span></span><span></span>
+            </label>
+            
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li class="nav-item"><a class="nav-link" href="./index.html">Главная</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./intro.html">Введение</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./os.html">ОС</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./networks.html">Сети</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./tools.html">Инструменты</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./security.html">Безопасность</a></li>
+                    <li class="nav-item nav-item-dropdown">
+                        <a class="nav-link nav-link-dropdown" href="#more" aria-haspopup="true" aria-expanded="false">
+                            Ещё <span class="dropdown-arrow">&dtrif;</span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-link" href="./backup.html">Резервное копирование</a></li>
+                            <li><a class="dropdown-link" href="./virtualization.html">Виртуализация</a></li>
+                            <li><a class="dropdown-link" href="./automation.html">Автоматизация</a></li>
+                            <li><a class="dropdown-link" href="./resources.html">Ресурсы</a></li>
+                            <li><a class="dropdown-link" href="./gallery.html">Галерея</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="./auth.html">Вход</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="content">
+        <section class="hero">
+            <h1 class="hero-title">Скриптинг и автоматизация</h1>
+            <p class="hero-subtitle">
+                Как перестать делать одно и то же руками: bash, PowerShell,
+                cron, Ansible и CI/CD. Глава 8 учебного курса.
+            </p>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Зачем автоматизировать</h2>
+            <p class="section-text">
+                Хороший администратор &mdash; ленивый администратор. Не в смысле &laquo;ничего не
+                делает&laquo;, а в смысле &laquo;не делает дважды одно и то же&laquo;. Если вы в третий
+                раз вводите одну и ту же последовательность команд &mdash; пора писать скрипт.
+            </p>
+
+            <div class="cards">
+                <article class="card">
+                    <h3 class="card-title">Экономия времени</h3>
+                    <p class="card-text">
+                        Настройка 50 серверов вручную займёт день.
+                        Скрипт справится за 5 минут.
+                    </p>
+                </article>
+                <article class="card">
+                    <h3 class="card-title">Меньше ошибок</h3>
+                    <p class="card-text">
+                        Человек устаёт и ошибается. Скрипт делает одно и то же
+                        одинаково хорошо в любое время суток.
+                    </p>
+                </article>
+                <article class="card">
+                    <h3 class="card-title">Документация сама собой</h3>
+                    <p class="card-text">
+                        Скрипт &mdash; это ещё и описание того, что именно
+                        было сделано на сервере.
+                    </p>
+                </article>
+            </div>
+
+            <blockquote class="quote">
+                &laquo;Автоматизируй всё, что делаешь больше двух раз.
+                Исключение &mdash; если задача требует творчества.&laquo;
+            </blockquote>
+        </section>
+
+        <section class="section section-alt">
+            <h2 class="section-title">Bash: скрипты для Linux</h2>
+            <p class="section-text">
+                Bash &mdash; стандартная оболочка почти всех Linux-систем. Если вы
+                освоили командную строку, следующий шаг &mdash; научиться складывать
+                команды в сценарии.
+            </p>
+
+            <h3 class="subsection-title">Структура скрипта</h3>
+            <pre class="code-block"><code>#!/bin/bash
+# Первая строка — &laquo;шебанг&laquo;, указывает интерпретатор
+
+# Переменные
+NAME="admin"
+DATE=$(date +%F)
+
+# Условие
+if [ -d "/var/log" ]; then
+    echo "Каталог логов найден"
+else
+    echo "Каталог отсутствует"
+fi
+
+# Цикл
+for file in /etc/*.conf; do
+    echo "Найден конфиг: $file"
+done
+
+# Функция
+greet() {
+    echo "Привет, $1!"
+}
+greet "$NAME"</code></pre>
+
+            <h3 class="subsection-title">Основные конструкции</h3>
+            <ul class="osi-list">
+                <li class="osi-item"><span class="osi-num">1</span> Переменные: <code>VAR="value"</code>,
+                    <code>$VAR</code>
+                </li>
+                <li class="osi-item"><span class="osi-num">2</span> Условия: <code>if / elif / else</code></li>
+                <li class="osi-item"><span class="osi-num">3</span> Циклы: <code>for</code>, <code>while</code>,
+                    <code>until</code>
+                </li>
+                <li class="osi-item"><span class="osi-num">4</span> Функции: <code>name() { ... }</code></li>
+                <li class="osi-item"><span class="osi-num">5</span> Пайпы: <code>cmd1 | cmd2</code></li>
+                <li class="osi-item"><span class="osi-num">6</span> Перенаправления: <code>&gt;</code>,
+                    <code>&gt;&gt;</code>,
+                    <code>2&gt;&amp;1</code>
+                </li>
+            </ul>
+
+            <p class="note">
+                <ins>Совет:</ins> проверяйте скрипты через <code>shellcheck</code>. Он
+                найдёт 90% типичных ошибок ещё до запуска: незакрытые кавычки,
+                необъявленные переменные, неверные условия.
+            </p>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">PowerShell: скрипты для Windows</h2>
+            <p class="section-text">
+                PowerShell &mdash; современная оболочка Windows. В отличие от старого
+                <code>cmd</code>, она работает с объектами, а не с текстом. Это делает
+                её гораздо мощнее для администрирования.
+            </p>
+
+            <h3 class="subsection-title">Пример скрипта</h3>
+            <pre class="code-block"><code># Переменные
+$Name = "Admin"
+$Date = Get-Date -Format "yyyy-MM-dd"
+
+# Условие
+if (Test-Path "C:\Logs") {
+    Write-Host "Каталог логов найден"
+} else {
+    New-Item -Path "C:\Logs" -ItemType Directory
+}
+
+# Цикл по файлам
+Get-ChildItem "C:\Configs\*.xml" | ForEach-Object {
+    Write-Host "Найден конфиг: $($_.Name)"
+}
+
+# Функция
+function Greet {
+    param([string]$UserName)
+    Write-Host "Привет, $UserName!"
+}
+Greet -UserName $Name</code></pre>
+
+            <h3 class="subsection-title">Почему PowerShell, а не cmd</h3>
+            <div class="cards">
+                <article class="card">
+                    <h3 class="card-title">Объекты вместо текста</h3>
+                    <p class="card-text">
+                        Команды возвращают не строки, а объекты с полями.
+                        Не нужно &laquo;парсить&laquo; вывод &mdash; можно сразу обратиться
+                        к нужному свойству.
+                    </p>
+                </article>
+                <article class="card">
+                    <h3 class="card-title">Единый синтаксис</h3>
+                    <p class="card-text">
+                        Все команды построены по схеме &laquo;глагол-существительное&laquo;:
+                        <code>Get-Service</code>, <code>Stop-Service</code>,
+                        <code>New-Item</code>.
+                    </p>
+                </article>
+                <article class="card">
+                    <h3 class="card-title">Интеграция с .NET</h3>
+                    <p class="card-text">
+                        Можно вызывать любые библиотеки .NET напрямую.
+                        Это делает PowerShell почти полноценным языком.
+                    </p>
+                </article>
+            </div>
+
+            <h3 class="subsection-title">Сравнение синтаксиса</h3>
+            <table class="compare-table">
+                <thead>
+                    <tr>
+                        <th class="th-feature">Задача</th>
+                        <th class="th-windows">Bash</th>
+                        <th class="th-linux">PowerShell</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="td-feature">Переменная</td>
+                        <td><code>VAR="value"</code></td>
+                        <td><code>$Var = "value"</code></td>
+                    </tr>
+                    <tr>
+                        <td class="td-feature">Условие</td>
+                        <td><code>if [ -f file ]</code></td>
+                        <td><code>if (Test-Path file)</code></td>
+                    </tr>
+                    <tr>
+                        <td class="td-feature">Цикл</td>
+                        <td><code>for f in *.txt</code></td>
+                        <td><code>Get-ChildItem *.txt | ForEach-Object</code></td>
+                    </tr>
+                    <tr>
+                        <td class="td-feature">Вывод</td>
+                        <td><code>echo "text"</code></td>
+                        <td><code>Write-Host "text"</code></td>
+                    </tr>
+                    <tr>
+                        <td class="td-feature">Файл скрипта</td>
+                        <td><code>script.sh</code></td>
+                        <td><code>script.ps1</code></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="section section-alt">
+            <h2 class="section-title">Планировщики задач</h2>
+            <p class="section-text">
+                Не все скрипты запускаются вручную. Большинство работает по расписанию:
+                бэкапы ночью, обновления в выходные, проверки каждые пять минут.
+            </p>
+
+            <h3 class="subsection-title">cron в Linux</h3>
+            <p class="section-text">
+                <code>cron</code> &mdash; демон, запускающий команды по расписанию.
+                Расписание описывается в формате из пяти полей:
+            </p>
+
+            <pre class="code-block"><code># ┌── минута (0-59)
+# │ ┌── час (0-23)
+# │ │ ┌── день месяца (1-31)
+# │ │ │ ┌── месяц (1-12)
+# │ │ │ │ ┌── день недели (0-7, 0 и 7 = воскресенье)
+# │ │ │ │ │
+# * * * * * command
+
+# Каждый день в 3:30 утра — бэкап
+30 3 * * * /usr/local/bin/backup.sh
+
+# Каждые 5 минут — проверка состояния сервиса
+*/5 * * * * /usr/local/bin/check-service.sh
+
+# По понедельникам в 9:00 — отчёт
+0 9 * * 1 /usr/local/bin/weekly-report.sh
+
+# Редактировать расписание
+crontab -e
+
+# Посмотреть текущие задачи
+crontab -l</code></pre>
+
+            <h3 class="subsection-title">Task Scheduler в Windows</h3>
+            <p class="section-text">
+                Аналог cron, но с графическим интерфейсом. Создаётся через
+                <code>taskschd.msc</code> или командой <code>schtasks</code>.
+            </p>
+
+            <pre class="code-block"><code># Создать задачу через CLI
+schtasks /create /tn "DailyBackup" ^
+    /tr "C:\Scripts\backup.ps1" ^
+    /sc daily /st 03:30
+
+# Запустить вручную
+schtasks /run /tn "DailyBackup"
+
+# Удалить
+schtasks /delete /tn "DailyBackup" /f</code></pre>
+
+            <p class="note">
+                <ins>Совет:</ins> запускайте тяжёлые задачи ночью. Днём сервер
+                загружен пользователями, и бэкап может испортить всем жизнь.
+                Также следите за пересечением расписаний &mdash; два тяжёлых
+                скрипта в 3:00 одновременно положат диск.
+            </p>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Ansible: управление конфигурациями</h2>
+            <p class="section-text">
+                Когда у вас 5 серверов, bash-скрипт справится. Когда 500 &mdash; нужен
+                инструмент, который опишет <em>желаемое состояние</em> всех машин сразу.
+                Ansible &mdash; самый популярный open-source вариант.
+            </p>
+
+            <h3 class="subsection-title">Ключевые идеи</h3>
+            <ul class="osi-list">
+                <li class="osi-item"><span class="osi-num">1</span> Работает по SSH &mdash; ничего не нужно ставить на
+                    целевые машины</li>
+                <li class="osi-item"><span class="osi-num">2</span> Конфигурации описываются в YAML &mdash; читаемо и
+                    понятно</li>
+                <li class="osi-item"><span class="osi-num">3</span> <em>Идемпотентность</em> &mdash; повторный запуск не
+                    ломает систему</li>
+                <li class="osi-item"><span class="osi-num">4</span> Есть готовые модули почти под любую задачу</li>
+                <li class="osi-item"><span class="osi-num">5</span> Не требует центрального агента &mdash; работает
+                    &laquo;из
+                    коробки&laquo;</li>
+            </ul>
+
+            <h3 class="subsection-title">Пример playbook</h3>
+            <pre class="code-block"><code>---
+- name: Настройка веб-сервера
+  hosts: webservers
+  become: yes
+
+  tasks:
+    - name: Установить nginx
+      apt:
+        name: nginx
+        state: present
+
+    - name: Скопировать конфигурацию
+      copy:
+        src: files/nginx.conf
+        dest: /etc/nginx/nginx.conf
+      notify: Перезапустить nginx
+
+    - name: Запустить сервис
+      service:
+        name: nginx
+        state: started
+        enabled: yes
+
+  handlers:
+    - name: Перезапустить nginx
+      service:
+        name: nginx
+        state: restarted</code></pre>
+
+            <p class="section-text">
+                Один такой файл &mdash; и вы готовы развернуть веб-сервер на сотне
+                машин одной командой: <code>ansible-playbook site.yml</code>.
+            </p>
+
+            <h3 class="subsection-title">Аналоги Ansible</h3>
+            <div class="cards">
+                <article class="card">
+                    <h3 class="card-title">Puppet</h3>
+                    <p class="card-text">
+                        Мощный, но требует агента на каждой машине.
+                        Популярен в крупных корпорациях.
+                    </p>
+                </article>
+                <article class="card">
+                    <h3 class="card-title">Chef</h3>
+                    <p class="card-text">
+                        Гибкий, программируемый на Ruby.
+                        Крутая кривая обучения.
+                    </p>
+                </article>
+                <article class="card">
+                    <h3 class="card-title">SaltStack</h3>
+                    <p class="card-text">
+                        Очень быстрый, работает через ZeroMQ.
+                        Подходит для тысяч машин.
+                    </p>
+                </article>
+            </div>
+        </section>
+
+        <section class="section section-alt">
+            <h2 class="section-title">CI/CD: автоматизация поставки</h2>
+            <p class="section-text">
+                CI/CD &mdash; это про автоматизацию всего пути кода от разработчика
+                до продакшена. Ручной деплой &mdash; источник ошибок и ночных звонков.
+            </p>
+
+            <h3 class="subsection-title">Что означают аббревиатуры</h3>
+            <ul class="osi-list">
+                <li class="osi-item">
+                    <span class="osi-num">CI</span>
+                    Continuous Integration &mdash; автоматическая сборка и тесты при каждом коммите
+                </li>
+                <li class="osi-item">
+                    <span class="osi-num">CD</span>
+                    Continuous Delivery &mdash; код всегда готов к выкатке в прод
+                </li>
+                <li class="osi-item">
+                    <span class="osi-num">CD</span>
+                    Continuous Deployment &mdash; выкатка в прод без ручного подтверждения
+                </li>
+            </ul>
+
+            <h3 class="subsection-title">Типичный пайплайн</h3>
+            <ol class="skills-list">
+                <li class="skills-item">Разработчик пушит код в репозиторий.</li>
+                <li class="skills-item">CI-система собирает приложение и запускает тесты.</li>
+                <li class="skills-item">При успехе собирается Docker-образ и публикуется в реестр.</li>
+                <li class="skills-item">CD-система разворачивает образ в тестовой среде.</li>
+                <li class="skills-item">Проходит приёмочное тестирование и security-скан.</li>
+                <li class="skills-item">Автоматически или по кнопке выкатывается в продакшен.</li>
+            </ol>
+
+            <h3 class="subsection-title">Инструменты</h3>
+            <div class="cards">
+                <article class="card">
+                    <h3 class="card-title">GitLab CI</h3>
+                    <p class="card-text">
+                        Встроен в GitLab. Конфигурация в <code>.gitlab-ci.yml</code>.
+                        Можно поднять self-hosted.
+                    </p>
+                </article>
+                <article class="card">
+                    <h3 class="card-title">GitHub Actions</h3>
+                    <p class="card-text">
+                        Бесплатно для open-source. Огромная библиотека
+                        готовых действий.
+                    </p>
+                </article>
+                <article class="card">
+                    <h3 class="card-title">Jenkins</h3>
+                    <p class="card-text">
+                        Ветеран индустрии. Гибкий, но требует времени
+                        на настройку и поддержку.
+                    </p>
+                </article>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Лучшие практики</h2>
+            <p class="section-text">
+                Автоматизация без дисциплины может навредить: один плохой скрипт
+                положит всю инфраструктуру быстрее, чем ручная ошибка. Вот что
+                стоит помнить.
+            </p>
+
+            <ul class="skills-list">
+                <li class="skills-item">
+                    <strong>Храните скрипты в Git.</strong> Не на рабочем столе,
+                    не в блокноте &mdash; в репозитории с историей изменений.
+                </li>
+                <li class="skills-item">
+                    <strong>Пишите комментарии.</strong> Через полгода вы не вспомните,
+                    зачем в скрипте &laquo;вот эта странная проверка&laquo;.
+                </li>
+                <li class="skills-item">
+                    <strong>Обрабатывайте ошибки.</strong> <code>set -e</code> в bash
+                    остановит скрипт при первой ошибке. Без него скрипт продолжит
+                    работу, нанося ущерб.
+                </li>
+                <li class="skills-item">
+                    <strong>Логируйте всё.</strong> Куда писать, с какой детализацией,
+                    что делать при ошибке &mdash; должно быть решено заранее.
+                </li>
+                <li class="skills-item">
+                    <strong>Тестируйте на копии.</strong> Сначала в dev-среде,
+                    потом в проде. Никаких исключений.
+                </li>
+                <li class="skills-item">
+                    <strong>Не автоматизируйте хаос.</strong> Сначала наведите порядок
+                    в процессах вручную, потом автоматизируйте.
+                </li>
+                <li class="skills-item">
+                    <strong>Идемпотентность.</strong> Повторный запуск скрипта
+                    не должен ничего ломать.
+                </li>
+            </ul>
+
+            <blockquote class="quote">
+                &laquo;Автоматизация &mdash; это не про экономию времени сегодня.
+                Это про то, чтобы завтра не пришлось делать это снова.&laquo;
+            </blockquote>
+        </section>
+
+        <section class="section section-alt">
+            <h2 class="section-title">Практический совет</h2>
+            <p class="section-text">
+                Начните с малого. Не пытайтесь сразу написать идеальную систему
+                управления конфигурациями. Возьмите одну рутинную задачу &mdash;
+                например, ротацию логов &mdash; и напишите для неё скрипт. Потом
+                повесьте его на cron. Через месяц добавите второй. Через год
+                у вас будет своя автоматизированная инфраструктура.
+            </p>
+
+            <p class="note">
+                <ins>Совет:</ins> учитесь читать чужие скрипты. GitHub полон
+                готовых решений. Прежде чем писать своё, поищите &mdash;
+                возможно, кто-то уже решил эту задачу лучше.
+            </p>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Навигация по главам</h2>
+            <div class="chapter-nav">
+                <a class="chapter-link chapter-link-prev" href="./virtualization.html">
+                    <span class="chapter-label">&larr; Предыдущая глава</span>
+                    <span class="chapter-title">Виртуализация и контейнеры</span>
+                </a>
+                <a class="chapter-link chapter-link-next" href="./resources.html">
+                    <span class="chapter-label">Следующая глава &rarr;</span>
+                    <span class="chapter-title">Полезные ресурсы</span>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer" id="contacts">
+        <div class="container footer-grid">
+            <div class="footer-column">
+                <h4 class="footer-title">О проекте</h4>
+                <p class="footer-text">
+                    Учебные заметки по системному администрированию.
+                    Материалы предоставлены в образовательных целях.
+                </p>
+            </div>
+            <div class="footer-column">
+                <h4 class="footer-title">Разделы</h4>
+                <ul class="footer-list">
+                    <li class="footer-item"><a class="footer-link" href="./index.html">Главная</a></li>
+                    <li class="footer-item"><a class="footer-link" href="./virtualization.html">Виртуализация</a></li>
+                    <li class="footer-item"><a class="footer-link" href="./automation.html">Автоматизация</a></li>
+                    <li class="footer-item"><a class="footer-link" href="./gallery.html">Галерея</a></li>
+                    <li class="footer-item"><a class="footer-link" href="./resources.html">Ресурсы</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4 class="footer-title">Связь</h4>
+                <p class="footer-text">
+                    Email: <a class="footer-link" href="mailto:admin@example.com">admin@example.com</a>
+                </p>
+            </div>
+            <div class="footer-bottom">
+                <p class="copyright">&copy; 2026 SysAdmin Notes. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

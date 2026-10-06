@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/main.css">
+    <title>Сети и протоколы &mdash; SysAdmin Notes</title>
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="container">
+            <div class="logo">
+                <span class="logo-mark">SA</span>
+                <span class="logo-text">SysAdmin Notes</span>
+            </div>
+            
+            <input type="checkbox" id="menu-toggle" class="menu-toggle" hidden>
+            <label for="menu-toggle" class="burger" aria-label="Открыть меню">
+                <span></span><span></span><span></span>
+            </label>
+            
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li class="nav-item"><a class="nav-link" href="./index.html">Главная</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./intro.html">Введение</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./os.html">ОС</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./networks.html">Сети</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./tools.html">Инструменты</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./security.html">Безопасность</a></li>
+                    <li class="nav-item nav-item-dropdown">
+                        <a class="nav-link nav-link-dropdown" href="#more" aria-haspopup="true" aria-expanded="false">
+                            Ещё <span class="dropdown-arrow">&dtrif;</span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-link" href="./backup.html">Резервное копирование</a></li>
+                            <li><a class="dropdown-link" href="./virtualization.html">Виртуализация</a></li>
+                            <li><a class="dropdown-link" href="./automation.html">Автоматизация</a></li>
+                            <li><a class="dropdown-link" href="./resources.html">Ресурсы</a></li>
+                            <li><a class="dropdown-link" href="./gallery.html">Галерея</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="./auth.html">Вход</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="content">
+        <section class="hero">
+            <h1 class="hero-title">Сети и протоколы</h1>
+            <p class="hero-subtitle">
+                Как компьютеры находят друг друга, договариваются о правилах общения
+                и передают данные без потерь. Глава 3 учебного курса.
+            </p>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Зачем сисадмину сети</h2>
+            <p class="section-text">
+                Можно идеально настроить сервер, но если он не имеет доступа к сети &mdash; он
+                бесполезен. Понимание сетей отличает уверенного администратора от новичка,
+                который &laquo;нажимает кнопки по инструкции&raquo;. Без сетей нет ни интернета, ни
+                корпоративной инфраструктуры, ни облачных сервисов.
+            </p>
+
+            <div class="cards">
+                <article class="card">
+                    <h3 class="card-title">Связность</h3>
+                    <p class="card-text">
+                        Устройства должны уметь находить друг друга. За это отвечают
+                        IP-адресация и маршрутизация.
+                    </p>
+                </article>
+                <article class="card">
+                    <h3 class="card-title">Надёжность</h3>
+                    <p class="card-text">
+                        Данные могут теряться, дублироваться, приходить не в том порядке.
+                        Протоколы решают эти проблемы.
+                    </p>
+                </article>
+                <article class="card">
+                    <h3 class="card-title">Безопасность</h3>
+                    <p class="card-text">
+                        Передача данных должна быть защищена. Шифрование, VPN и файрволы
+                        работают на сетевом уровне.
+                    </p>
+                </article>
+            </div>
+        </section>
+
+        <section class="section section-alt">
+            <h2 class="section-title">Модель OSI: семь уровней</h2>
+            <p class="section-text">
+                Эталонная модель OSI описывает, как данные проходят путь от приложения
+                на одном компьютере до приложения на другом. Каждый уровень решает свою
+                задачу и общается только с соседними уровнями.
+            </p>
+
+            <ul class="osi-list">
+                <li class="osi-item"><span class="osi-num">7</span> Прикладной &mdash; HTTP, FTP, SMTP, DNS</li>
+                <li class="osi-item"><span class="osi-num">6</span> Представления &mdash; кодировки, шифрование, сжатие
+                </li>
+                <li class="osi-item"><span class="osi-num">5</span> Сеансовый &mdash; установка и разрыв сессий</li>
+                <li class="osi-item"><span class="osi-num">4</span> Транспортный &mdash; TCP, UDP, порты</li>
+                <li class="osi-item"><span class="osi-num">3</span> Сетевой &mdash; IP, ICMP, маршрутизация</li>
+                <li class="osi-item"><span class="osi-num">2</span> Канальный &mdash; Ethernet, MAC-адреса, коммутаторы
+                </li>
+                <li class="osi-item"><span class="osi-num">1</span> Физический &mdash; кабели, сигналы, разъёмы</li>
+            </ul>
+
+            <blockquote class="quote">
+                &laquo;Не понимаешь, на каком уровне проблема &mdash; начинай снизу.
+                Кабель, потом интерфейс, потом маршрут, потом приложение.&raquo;
+            </blockquote>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Стек TCP/IP</h2>
+            <p class="section-text">
+                На практике чаще используют не семь уровней OSI, а четыре уровня модели
+                TCP/IP. Именно она лежит в основе интернета и современных локальных сетей.
+            </p>
+
+            <table class="compare-table">
+                <thead>
+                    <tr>
+                        <th class="th-feature">Уровень TCP/IP</th>
+                        <th class="th-windows">Соответствие в OSI</th>
+                        <th class="th-linux">Протоколы</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="td-feature">Прикладной</td>
+                        <td>7, 6, 5</td>
+                        <td>HTTP, DNS, SMTP, SSH</td>
+                    </tr>
+                    <tr>
+                        <td class="td-feature">Транспортный</td>
+                        <td>4</td>
+                        <td>TCP, UDP</td>
+                    </tr>
+                    <tr>
+                        <td class="td-feature">Межсетевой</td>
+                        <td>3</td>
+                        <td>IP, ICMP, ARP</td>
+                    </tr>
+                    <tr>
+                        <td class="td-feature">Канальный</td>
+                        <td>2, 1</td>
+                        <td>Ethernet, Wi-Fi</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="section section-alt">
+            <h2 class="section-title">IP-адресация</h2>
+            <p class="section-text">
+                IP-адрес &mdash; это &laquo;почтовый адрес&raquo; устройства в сети. Без него невозможно
+                отправить или получить пакет данных. Адреса бывают двух версий: IPv4 и IPv6.
+            </p>
+
+            <h3 class="subsection-title">IPv4 и IPv6</h3>
+            <div class="cards">
+                <article class="card">
+                    <h3 class="card-title">IPv4</h3>
+                    <p class="card-text">
+                        32-битный адрес. Пример: <code>192.168.1.10</code>.
+                        Всего около 4,3 млрд адресов &mdash; и они давно закончились.
+                    </p>
+                </article>
+                <article class="card">
+                    <h3 class="card-title">IPv6</h3>
+                    <p class="card-text">
+                        128-битный адрес. Пример: <code>2001:0db8::1428:57ab</code>.
+                        Практически неисчерпаемое пространство.
+                    </p>
+                </article>
+                <article class="card">
+                    <h3 class="card-title">NAT</h3>
+                    <p class="card-text">
+                        Трансляция адресов: множество устройств локальной сети выходят
+                        в интернет через один публичный IPv4-адрес.
+                    </p>
+                </article>
+            </div>
+
+            <h3 class="subsection-title">Частные диапазоны IPv4</h3>
+            <ul class="osi-list">
+                <li class="osi-item"><span class="osi-num">10</span> <code>10.0.0.0/8</code> &mdash; крупные
+                    корпоративные сети</li>
+                <li class="osi-item"><span class="osi-num">172</span> <code>172.16.0.0/12</code> &mdash; средние сети
+                </li>
+                <li class="osi-item"><span class="osi-num">192</span> <code>192.168.0.0/16</code> &mdash; домашние и
+                    офисные сети</li>
+            </ul>
+
+            <h3 class="subsection-title">Маска подсети и CIDR</h3>
+            <p class="section-text">
+                Маска показывает, какая часть адреса относится к сети, а какая &mdash; к устройству
+                внутри неё. Запись <code>/24</code> означает, что первые 24 бита &mdash; это сеть,
+                оставшиеся 8 &mdash; хосты. В подсети <code>/24</code> помещается 254 устройства.
+            </p>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Ключевые протоколы</h2>
+            <p class="section-text">
+                Протокол &mdash; это правила общения. Разные протоколы отвечают за разные задачи:
+                одни находят адреса, другие передают файлы, третьи синхронизируют время.
+            </p>
+
+            <table class="compare-table">
+                <thead>
+                    <tr>
+                        <th class="th-feature">Протокол</th>
+                        <th class="th-windows">Назначение</th>
+                        <th class="th-linux">Порт</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="td-feature">HTTP / HTTPS</td>
+                        <td>Веб-трафик</td>
+                        <td>80 / 443</td>
+                    </tr>
+                    <tr>
+                        <td class="td-feature">DNS</td>
+                        <td>Преобразование имён в IP-адреса</td>
+                        <td>53</td>
+                    </tr>
+                    <tr>
+                        <td class="td-feature">DHCP</td>
+                        <td>Автоматическая выдача IP-адресов</td>
+                        <td>67 / 68</td>
+                    </tr>
+                    <tr>
+                        <td class="td-feature">SSH</td>
+                        <td>Безопасный удалённый доступ</td>
+                        <td>22</td>
+                    </tr>
+                    <tr>
+                        <td class="td-feature">RDP</td>
+                        <td>Удалённый рабочий стол Windows</td>
+                        <td>3389</td>
+                    </tr>
+                    <tr>
+                        <td class="td-feature">SMTP / IMAP</td>
+                        <td>Отправка и получение почты</td>
+                        <td>25 / 143</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="section section-alt">
+            <h2 class="section-title">Маршрутизация</h2>
+            <p class="section-text">
+                Когда пакет покидает вашу машину, он должен понять, куда идти дальше. Этим
+                занимаются маршрутизаторы &mdash; они читают таблицу маршрутов и передают пакет
+                следующему узлу, пока тот не достигнет цели.
+            </p>
+
+            <h3 class="subsection-title">Что такое шлюз по умолчанию</h3>
+            <p class="section-text">
+                Шлюз &mdash; это &laquo;дверь&raquo; из локальной сети в интернет. Обычно это адрес
+                вашего роутера. Если пакет не знает, куда идти внутри сети, он отправляется
+                на шлюз, а тот решает, что с ним делать дальше.
+            </p>
+
+            <h3 class="subsection-title">Статическая и динамическая маршрутизация</h3>
+            <ul class="skills-list">
+                <li class="skills-item">
+                    <strong>Статическая</strong> &mdash; маршруты прописаны вручную. Просто, но плохо
+                    масштабируется.
+                </li>
+                <li class="skills-item">
+                    <strong>Динамическая</strong> &mdash; маршрутизаторы обмениваются информацией
+                    автоматически. Протоколы: OSPF, BGP, RIP.
+                </li>
+                <li class="skills-item">
+                    <strong>BGP</strong> &mdash; &laquo;протокол интернета&raquo;, связывает автономные системы
+                    провайдеров по всему миру.
+                </li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Службы сети</h2>
+            <p class="section-text">
+                В любой сети работают сервисы, о которых администратор должен помнить
+                каждый день. Они делают инфраструктуру удобной и управляемой.
+            </p>
+
+            <div class="cards">
+                <article class="card">
+                    <h3 class="card-title">DNS</h3>
+                    <p class="card-text">
+                        Превращает <code>example.com</code> в IP-адрес. Без DNS интернет
+                        пришлось бы запоминать по цифрам.
+                    </p>
+                </article>
+                <article class="card">
+                    <h3 class="card-title">DHCP</h3>
+                    <p class="card-text">
+                        Выдаёт устройствам IP-адрес, маску, шлюз и DNS автоматически.
+                        Настраивается один раз, работает для всех.
+                    </p>
+                </article>
+                <article class="card">
+                    <h3 class="card-title">NTP</h3>
+                    <p class="card-text">
+                        Синхронизирует время. Рассинхрон хотя бы в минуту ломает
+                        Kerberos, логи и сертификаты.
+                    </p>
+                </article>
+            </div>
+        </section>
+
+        <section class="section section-alt">
+            <h2 class="section-title">Диагностика сети</h2>
+            <p class="section-text">
+                Когда что-то не работает, важно быстро локализовать проблему. Вот минимум
+                команд, который должен знать каждый администратор.
+            </p>
+
+            <pre class="code-block"><code># Проверить доступность узла
+ping 8.8.8.8
+
+# Проследить маршрут до цели
+tracert example.com      # Windows
+traceroute example.com   # Linux
+
+# Узнать IP по имени
+nslookup example.com     # Windows
+dig example.com          # Linux
+
+# Показать активные соединения
+netstat -an              # Windows
+ss -tuln                 # Linux
+
+# Проверить IP-конфигурацию
+ipconfig /all            # Windows
+ip a                     # Linux</code></pre>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Практический совет</h2>
+            <p class="section-text">
+                Соберите домашнюю сеть из виртуальных машин &mdash; это лучший тренажёр.
+                Две виртуалки в VirtualBox в режиме &laquo;Внутренняя сеть&raquo; и одна с NAT &mdash;
+                и вы уже можете тренировать маршрутизацию, DNS, SSH, файрволы.
+            </p>
+
+            <p class="note">
+                <ins>Совет:</ins> установите <code>Wireshark</code> и посмотрите, как выглядит
+                реальный трафик. Одно дело &mdash; читать про TCP-рукопожатие, и совсем другое &mdash;
+                видеть его пакеты вживую.
+            </p>
+        </section>
+
+        <section class="section section-alt">
+            <h2 class="section-title">Навигация по главам</h2>
+            <div class="chapter-nav">
+                <a class="chapter-link chapter-link-prev" href="./os.html">
+                    <span class="chapter-label">&larr; Предыдущая глава</span>
+                    <span class="chapter-title">Windows и Linux изнутри</span>
+                </a>
+                <a class="chapter-link chapter-link-next" href="./tools.html">
+                    <span class="chapter-label">Следующая глава &rarr;</span>
+                    <span class="chapter-title">Инструменты и утилиты</span>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer" id="contacts">
+        <div class="container footer-grid">
+            <div class="footer-column">
+                <h4 class="footer-title">О проекте</h4>
+                <p class="footer-text">
+                    Учебные заметки по системному администрированию.
+                    Материалы предоставлены в образовательных целях.
+                </p>
+            </div>
+            <div class="footer-column">
+                <h4 class="footer-title">Разделы</h4>
+                <ul class="footer-list">
+                    <li class="footer-item"><a class="footer-link" href="./index.html">Главная</a></li>
+                    <li class="footer-item"><a class="footer-link" href="./os.html">ОС</a></li>
+                    <li class="footer-item"><a class="footer-link" href="./networks.html">Сети</a></li>
+                    <li class="footer-item"><a class="footer-link" href="./tools.html">Инструменты</a></li>
+                    <li class="footer-item"><a class="footer-link" href="./gallery.html">Галерея</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4 class="footer-title">Связь</h4>
+                <p class="footer-text">
+                    Email: <a class="footer-link" href="mailto:admin@example.com">admin@example.com</a>
+                </p>
+            </div>
+            <div class="footer-bottom">
+                <p class="copyright">&copy; 2026 SysAdmin Notes. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

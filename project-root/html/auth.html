@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/main.css">
+    <title>Вход &mdash; SysAdmin Notes</title>
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="container">
+            <div class="logo">
+                <span class="logo-mark">SA</span>
+                <span class="logo-text">SysAdmin Notes</span>
+            </div>
+
+            <input type="checkbox" id="menu-toggle" class="menu-toggle" hidden>
+            <label for="menu-toggle" class="burger" aria-label="Открыть меню">
+                <span></span><span></span><span></span>
+            </label>
+
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li class="nav-item"><a class="nav-link" href="./index.html">Главная</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./intro.html">Введение</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./os.html">ОС</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./networks.html">Сети</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./tools.html">Инструменты</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./security.html">Безопасность</a></li>
+                    <li class="nav-item nav-item-dropdown">
+                        <a class="nav-link nav-link-dropdown" href="#more" aria-haspopup="true" aria-expanded="false">
+                            Ещё <span class="dropdown-arrow">&dtrif;</span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-link" href="./backup.html">Резервное копирование</a></li>
+                            <li><a class="dropdown-link" href="./virtualization.html">Виртуализация</a></li>
+                            <li><a class="dropdown-link" href="./automation.html">Автоматизация</a></li>
+                            <li><a class="dropdown-link" href="./resources.html">Ресурсы</a></li>
+                            <li><a class="dropdown-link" href="./gallery.html">Галерея</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="./auth.html">Вход</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="content">
+        <section class="section auth-section">
+            <h2 class="section-title">Вход в личный кабинет</h2>
+            <p class="section-text">
+                Войдите в аккаунт или создайте новый, чтобы сохранять прогресс и получать
+                новые материалы.
+            </p>
+
+            <div class="auth-switch">
+                <a class="auth-switch-link" href="#login">Вход</a>
+                <a class="auth-switch-link" href="#register">Регистрация</a>
+            </div>
+
+            <div class="auth-panel" id="login">
+                <form class="form" action="#" method="post" novalidate>
+                    <div class="form-group">
+                        <label class="form-label" for="login-email">Email</label>
+                        <input class="form-input" type="email" id="login-email" name="login-email"
+                            placeholder="admin@example.com" autocomplete="email" required>
+                        <span class="form-error">Введите корректный email</span>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="login-password">Пароль</label>
+                        <input class="form-input" type="password" id="login-password" name="login-password"
+                            placeholder="Не менее 8 символов" autocomplete="current-password" minlength="8" required>
+                        <span class="form-error">Пароль должен быть не короче 8 символов</span>
+                    </div>
+
+                    <div class="form-group form-group-inline">
+                        <input class="form-checkbox" type="checkbox" id="remember" name="remember">
+                        <label class="form-label form-label-checkbox" for="remember">Запомнить меня</label>
+                    </div>
+
+                    <button class="btn btn-primary form-submit" type="submit">Войти</button>
+                </form>
+            </div>
+
+            <div class="auth-panel" id="register">
+                <form class="form" action="#" method="post" novalidate>
+                    <div class="form-group">
+                        <label class="form-label" for="reg-name">Имя</label>
+                        <input class="form-input" type="text" id="reg-name" name="reg-name"
+                            placeholder="Как к вам обращаться" autocomplete="name" minlength="2" required>
+                        <span class="form-error">Имя должно содержать минимум 2 символа</span>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="reg-email">Email</label>
+                        <input class="form-input" type="email" id="reg-email" name="reg-email"
+                            placeholder="admin@example.com" autocomplete="email" required>
+                        <span class="form-error">Введите корректный email</span>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="reg-password">Пароль</label>
+                        <input class="form-input" type="password" id="reg-password" name="reg-password"
+                            placeholder="Не менее 8 символов" autocomplete="new-password" minlength="8" required>
+                        <span class="form-error">Пароль должен быть не короче 8 символов</span>
+                    </div>
+
+                    <div class="form-group form-group-inline">
+                        <input class="form-checkbox" type="checkbox" id="agree" name="agree" required>
+                        <label class="form-label form-label-checkbox" for="agree">
+                            Согласен с условиями использования
+                        </label>
+                        <span class="form-error">Подтвердите согласие</span>
+                    </div>
+
+                    <button class="btn btn-primary form-submit" type="submit">Создать аккаунт</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer" id="contacts">
+        <div class="container footer-grid">
+            <div class="footer-column">
+                <h4 class="footer-title">О проекте</h4>
+                <p class="footer-text">
+                    Учебные заметки по системному администрированию.
+                    Материалы предоставлены в образовательных целях.
+                </p>
+            </div>
+            <div class="footer-column">
+                <h4 class="footer-title">Разделы</h4>
+                <ul class="footer-list">
+                    <li class="footer-item"><a class="footer-link" href="./index.html">Главная</a></li>
+                    <li class="footer-item"><a class="footer-link" href="./intro.html">Введение</a></li>
+                    <li class="footer-item"><a class="footer-link" href="./tools.html">Инструменты</a></li>
+                    <li class="footer-item"><a class="footer-link" href="./auth.html">Вход</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4 class="footer-title">Связь</h4>
+                <p class="footer-text">
+                    Email: <a class="footer-link" href="mailto:admin@example.com">admin@example.com</a>
+                </p>
+            </div>
+            <div class="footer-bottom">
+                <p class="copyright">&copy; 2026 SysAdmin Notes. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

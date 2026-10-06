@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/main.css">
+    <title>Windows и Linux изнутри &mdash; SysAdmin Notes</title>
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="container">
+            <div class="logo">
+                <span class="logo-mark">SA</span>
+                <span class="logo-text">SysAdmin Notes</span>
+            </div>
+
+            <input type="checkbox" id="menu-toggle" class="menu-toggle" hidden>
+            <label for="menu-toggle" class="burger" aria-label="Открыть меню">
+                <span></span><span></span><span></span>
+            </label>
+
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li class="nav-item"><a class="nav-link" href="./index.html">Главная</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./intro.html">Введение</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./os.html">ОС</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./networks.html">Сети</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./tools.html">Инструменты</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./security.html">Безопасность</a></li>
+                    <li class="nav-item nav-item-dropdown">
+                        <a class="nav-link nav-link-dropdown" href="#more" aria-haspopup="true" aria-expanded="false">
+                            Ещё <span class="dropdown-arrow">&dtrif;</span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-link" href="./backup.html">Резервное копирование</a></li>
+                            <li><a class="dropdown-link" href="./virtualization.html">Виртуализация</a></li>
+                            <li><a class="dropdown-link" href="./automation.html">Автоматизация</a></li>
+                            <li><a class="dropdown-link" href="./resources.html">Ресурсы</a></li>
+                            <li><a class="dropdown-link" href="./gallery.html">Галерея</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="./auth.html">Вход</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="content">
+        <section class="hero">
+            <h1 class="hero-title">Windows и Linux изнутри</h1>
+            <p class="hero-subtitle">
+                Архитектура, файловые системы, ядро и оболочки двух главных операционных
+                систем. Глава 2 учебного курса.
+            </p>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Архитектура операционных систем</h2>
+            <p class="section-text">
+                И Windows, и Linux построены по схожей схеме: <strong>ядро</strong> (kernel) общается
+                с оборудованием, а <strong>пользовательские приложения</strong> работают через системные вызовы.
+                Различия — в деталях.
+            </p>
+
+            <div class="cards">
+                <article class="card">
+                    <h3 class="card-title">Ядро</h3>
+                    <p class="card-text">
+                        В Linux — монолитное ядро с модулями. В Windows — гибридное,
+                        с подсистемами (Win32, POSIX, WSL).
+                    </p>
+                </article>
+                <article class="card">
+                    <h3 class="card-title">Драйверы</h3>
+                    <p class="card-text">
+                        Linux: модули ядра (<code>.ko</code>). Windows: <code>.sys</code>-файлы,
+                        подписанные Microsoft.
+                    </p>
+                </article>
+                <article class="card">
+                    <h3 class="card-title">Оболочки</h3>
+                    <p class="card-text">
+                        Linux: bash, zsh, fish. Windows: cmd, PowerShell,
+                        Windows Terminal.
+                    </p>
+                </article>
+            </div>
+        </section>
+
+        <section class="section section-alt">
+            <h2 class="section-title">Файловые системы</h2>
+            <p class="section-text">
+                От файловой системы зависит производительность диска, надёжность и удобство
+                работы с данными. Вот основные варианты.
+            </p>
+
+            <table class="compare-table">
+                <thead>
+                    <tr>
+                        <th class="th-feature">ФС</th>
+                        <th class="th-windows">Платформа</th>
+                        <th class="th-linux">Особенности</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="td-feature">NTFS</td>
+                        <td>Windows</td>
+                        <td>Журналирование, права доступа, шифрование</td>
+                    </tr>
+                    <tr>
+                        <td class="td-feature">FAT32</td>
+                        <td>Обе</td>
+                        <td>Совместимость, но лимит файла 4 ГБ</td>
+                    </tr>
+                    <tr>
+                        <td class="td-feature">ext4</td>
+                        <td>Linux</td>
+                        <td>Журналирование, стабильность, гибкость</td>
+                    </tr>
+                    <tr>
+                        <td class="td-feature">XFS</td>
+                        <td>Linux</td>
+                        <td>Высокая производительность на больших объёмах</td>
+                    </tr>
+                    <tr>
+                        <td class="td-feature">Btrfs / ZFS</td>
+                        <td>Linux</td>
+                        <td>Снапшоты, контрольные суммы, RAID</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Файловая иерархия</h2>
+            <p class="section-text">
+                Windows использует буквы дисков (<code>C:\</code>), Linux — единое дерево,
+                начинающееся с <code>/</code>. Это одно из ключевых отличий, к которому
+                привыкаешь не сразу.
+            </p>
+
+            <h3 class="subsection-title">Структура каталогов в Linux</h3>
+            <ul class="osi-list">
+                <li class="osi-item"><span class="osi-num">/</span> Корень файловой системы</li>
+                <li class="osi-item"><span class="osi-num">/etc</span> Конфигурационные файлы</li>
+                <li class="osi-item"><span class="osi-num">/home</span> Домашние каталоги пользователей</li>
+                <li class="osi-item"><span class="osi-num">/var</span> Переменные данные (логи, очереди)</li>
+                <li class="osi-item"><span class="osi-num">/usr</span> Пользовательские программы</li>
+                <li class="osi-item"><span class="osi-num">/tmp</span> Временные файлы</li>
+                <li class="osi-item"><span class="osi-num">/opt</span> Дополнительное ПО</li>
+            </ul>
+
+            <h3 class="subsection-title">Ключевые каталоги Windows</h3>
+            <ul class="osi-list">
+                <li class="osi-item"><span class="osi-num">C:\</span> Системный диск</li>
+                <li class="osi-item"><span class="osi-num">C:\Windows</span> Системные файлы ОС</li>
+                <li class="osi-item"><span class="osi-num">C:\Program Files</span> Установленные программы</li>
+                <li class="osi-item"><span class="osi-num">C:\Users</span> Профили пользователей</li>
+                <li class="osi-item"><span class="osi-num">C:\Temp</span> Временные файлы</li>
+            </ul>
+        </section>
+
+        <section class="section section-alt">
+            <h2 class="section-title">Пакетные менеджеры</h2>
+            <p class="section-text">
+                Установка и обновление программ &mdash; ежедневная задача администратора.
+                В Linux для этого исторически служат пакетные менеджеры, в Windows аналог
+                появился относительно недавно.
+            </p>
+
+            <div class="cards">
+                <article class="card">
+                    <h3 class="card-title">apt / dnf / pacman</h3>
+                    <p class="card-text">
+                        Пакетные менеджеры Debian/Ubuntu, Fedora/RHEL и Arch.
+                        Установка: <code>sudo apt install nginx</code>.
+                    </p>
+                </article>
+                <article class="card">
+                    <h3 class="card-title">winget / Chocolatey</h3>
+                    <p class="card-text">
+                        Современные менеджеры пакетов для Windows. Работают
+                        из командной строки и PowerShell.
+                    </p>
+                </article>
+                <article class="card">
+                    <h3 class="card-title">Snap / Flatpak</h3>
+                    <p class="card-text">
+                        Универсальные форматы для Linux с изоляцией приложений.
+                        Удобны для GUI-программ.
+                    </p>
+                </article>
+            </div>
+
+            <blockquote class="quote">
+                &laquo;Не важно, в какой ОС вы работаете &mdash; важно понимать, что делает каждая команда.
+                Синтаксис приходит с практикой.&raquo;
+            </blockquote>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Навигация по главам</h2>
+            <div class="chapter-nav">
+                <a class="chapter-link chapter-link-prev" href="./intro.html">
+                    <span class="chapter-label">&larr; Предыдущая глава</span>
+                    <span class="chapter-title">Введение в профессию</span>
+                </a>
+                <a class="chapter-link chapter-link-next" href="./networks.html">
+                    <span class="chapter-label">Следующая глава &rarr;</span>
+                    <span class="chapter-title">Сети и протоколы</span>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer" id="contacts">
+        <div class="container footer-grid">
+            <div class="footer-column">
+                <h4 class="footer-title">О проекте</h4>
+                <p class="footer-text">
+                    Учебные заметки по системному администрированию.
+                    Материалы предоставлены в образовательных целях.
+                </p>
+            </div>
+            <div class="footer-column">
+                <h4 class="footer-title">Разделы</h4>
+                <ul class="footer-list">
+                    <li class="footer-item"><a class="footer-link" href="./index.html">Главная</a></li>
+                    <li class="footer-item"><a class="footer-link" href="./intro.html">Введение</a></li>
+                    <li class="footer-item"><a class="footer-link" href="./networks.html">Сети</a></li>
+                    <li class="footer-item"><a class="footer-link" href="./gallery.html">Галерея</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4 class="footer-title">Связь</h4>
+                <p class="footer-text">
+                    Email: <a class="footer-link" href="mailto:admin@example.com">admin@example.com</a>
+                </p>
+            </div>
+            <div class="footer-bottom">
+                <p class="copyright">&copy; 2026 SysAdmin Notes. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

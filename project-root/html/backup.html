@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/main.css">
+    <title>Резервное копирование &mdash; SysAdmin Notes</title>
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="container">
+            <div class="logo">
+                <span class="logo-mark">SA</span>
+                <span class="logo-text">SysAdmin Notes</span>
+            </div>
+            
+            <input type="checkbox" id="menu-toggle" class="menu-toggle" hidden>
+            <label for="menu-toggle" class="burger" aria-label="Открыть меню">
+                <span></span><span></span><span></span>
+            </label>
+            
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li class="nav-item"><a class="nav-link" href="./index.html">Главная</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./intro.html">Введение</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./os.html">ОС</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./networks.html">Сети</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./tools.html">Инструменты</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./security.html">Безопасность</a></li>
+                    <li class="nav-item nav-item-dropdown">
+                        <a class="nav-link nav-link-dropdown" href="#more" aria-haspopup="true" aria-expanded="false">
+                            Ещё <span class="dropdown-arrow">&dtrif;</span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-link" href="./backup.html">Резервное копирование</a></li>
+                            <li><a class="dropdown-link" href="./virtualization.html">Виртуализация</a></li>
+                            <li><a class="dropdown-link" href="./automation.html">Автоматизация</a></li>
+                            <li><a class="dropdown-link" href="./resources.html">Ресурсы</a></li>
+                            <li><a class="dropdown-link" href="./gallery.html">Галерея</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="./auth.html">Вход</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="content">
+        <section class="hero">
+            <h1 class="hero-title">Резервное копирование</h1>
+            <p class="hero-subtitle">
+                Стратегии, инструменты и правила восстановления данных.
+                Как не потерять всё за одну ночь. Глава 6 учебного курса.
+            </p>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Зачем нужны бэкапы</h2>
+            <p class="section-text">
+                Резервное копирование &mdash; единственная защита, которая работает, когда
+                всё остальное уже не помогло. Файрвол не спасёт от случайного
+                <code>rm -rf /</code>, шифрование &mdash; от ransomware, а мониторинг &mdash; от
+                администратора, который забыл, что развёртывает в прод.
+            </p>
+
+            <div class="cards">
+                <article class="card">
+                    <h3 class="card-title">Аппаратные сбои</h3>
+                    <p class="card-text">
+                        Диски умирают. RAID защищает от отказа одного диска,
+                        но не от пожара в серверной.
+                    </p>
+                </article>
+                <article class="card">
+                    <h3 class="card-title">Человеческий фактор</h3>
+                    <p class="card-text">
+                        Случайное удаление, неверная команда, слитая база.
+                        Самая частая причина потери данных.
+                    </p>
+                </article>
+                <article class="card">
+                    <h3 class="card-title">Атаки и шифровальщики</h3>
+                    <p class="card-text">
+                        Ransomware шифрует всё, до чего дотянется.
+                        Единственное спасение &mdash; копия вне сети.
+                    </p>
+                </article>
+            </div>
+
+            <blockquote class="quote">
+                &laquo;Люди делятся на тех, кто делает бэкапы, и тех, кто ещё будет
+                их делать. Вторые, к сожалению, обычно узнают об этом слишком поздно.&raquo;
+            </blockquote>
+        </section>
+
+        <section class="section section-alt">
+            <h2 class="section-title">Правило 3-2-1</h2>
+            <p class="section-text">
+                Золотой стандарт резервного копирования, сформулированный ещё в 2000-х.
+                Работает и сегодня, независимо от масштаба инфраструктуры.
+            </p>
+
+            <ul class="backup-list">
+                <li class="backup-item"><strong>3</strong> копии данных</li>
+                <li class="backup-item"><strong>2</strong> разных носителя</li>
+                <li class="backup-item"><strong>1</strong> копия &mdash; вне офиса</li>
+            </ul>
+
+            <h3 class="subsection-title">Расширение 3-2-1-1-0</h3>
+            <p class="section-text">
+                Современная версия правила добавляет ещё два пункта, которые критичны
+                в эпоху ransomware:
+            </p>
+
+            <ul class="skills-list">
+                <li class="skills-item">
+                    <strong>1</strong> копия должна быть <em>offline</em> или <em>immutable</em> &mdash;
+                    недоступна для изменения даже администратору.
+                </li>
+                <li class="skills-item">
+                    <strong>0</strong> ошибок при восстановлении &mdash; проверка бэкапов
+                    должна быть регулярной и автоматической.
+                </li>
+            </ul>
+
+            <p class="note">
+                <ins>Совет:</ins> непроверенный бэкап &mdash; это не бэкап, а надежда.
+                Раз в месяц восстанавливайте данные в тестовой среде и убеждайтесь,
+                что процедура работает.
+            </p>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Виды резервного копирования</h2>
+            <p class="section-text">
+                Не все бэкапы одинаковы. Выбор стратегии определяет, как быстро вы
+                восстановите данные и сколько места займут копии.
+            </p>
+
+            <h3 class="subsection-title">По объёму данных</h3>
+            <table class="compare-table">
+                <thead>
+                    <tr>
+                        <th class="th-feature">Тип</th>
+                        <th class="th-windows">Что копируется</th>
+                        <th class="th-linux">Плюсы и минусы</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="td-feature">Полный (Full)</td>
+                        <td>Все данные целиком</td>
+                        <td>Быстро восстанавливается, занимает много места</td>
+                    </tr>
+                    <tr>
+                        <td class="td-feature">Инкрементный</td>
+                        <td>Только изменения с последнего бэкапа</td>
+                        <td>Экономит место, медленное восстановление</td>
+                    </tr>
+                    <tr>
+                        <td class="td-feature">Дифференциальный</td>
+                        <td>Изменения с последнего полного</td>
+                        <td>Компромисс: и место, и скорость</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3 class="subsection-title">Стратегии на практике</h3>
+            <div class="cards">
+                <article class="card">
+                    <h3 class="card-title">Ежедневная схема</h3>
+                    <p class="card-text">
+                        Полный раз в неделю + инкремент каждый день.
+                        Классика для небольших инфраструктур.
+                    </p>
+                </article>
+                <article class="card">
+                    <h3 class="card-title">GFS (дед-отец-сын)</h3>
+                    <p class="card-text">
+                        Ежедневные + еженедельные + ежемесячные копии.
+                        Гибко, хранит историю за месяцы.
+                    </p>
+                </article>
+                <article class="card">
+                    <h3 class="card-title">Непрерывная защита</h3>
+                    <p class="card-text">
+                        CDP (Continuous Data Protection) &mdash; каждая запись
+                        фиксируется. Дорого, но RPO близок к нулю.
+                    </p>
+                </article>
+            </div>
+        </section>
+
+        <section class="section section-alt">
+            <h2 class="section-title">RPO и RTO</h2>
+            <p class="section-text">
+                Два числа, которые определяют, какой бэкап вам нужен. Без них любая
+                стратегия &mdash; стрельба из пушки по воробьям.
+            </p>
+
+            <ul class="osi-list">
+                <li class="osi-item">
+                    <span class="osi-num">RPO</span>
+                    Recovery Point Objective &mdash; сколько данных допустимо потерять (например, час)
+                </li>
+                <li class="osi-item">
+                    <span class="osi-num">RTO</span>
+                    Recovery Time Objective &mdash; за какое время нужно восстановиться (например, 4 часа)
+                </li>
+            </ul>
+
+            <p class="section-text">
+                Чем меньше RPO и RTO, тем дороже инфраструктура. Задача администратора &mdash;
+                найти баланс между стоимостью и требованиями бизнеса.
+            </p>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Инструменты</h2>
+            <p class="section-text">
+                Арсенал администратора включает как встроенные утилиты, так и
+                специализированные системы. Для дома &mdash; одни, для корпоративной
+                среды &mdash; другие.
+            </p>
+
+            <h3 class="subsection-title">Для Linux</h3>
+            <div class="cards">
+                <article class="card">
+                    <h3 class="card-title">rsync</h3>
+                    <p class="card-text">
+                        Классика. Синхронизирует каталоги локально и по сети,
+                        копирует только изменения.
+                    </p>
+                </article>
+                <article class="card">
+                    <h3 class="card-title">tar / gzip</h3>
+                    <p class="card-text">
+                        Архивация &laquo;вручную&raquo; через скрипты. Гибко, но нужно
+                        писать логику самому.
+                    </p>
+                </article>
+                <article class="card">
+                    <h3 class="card-title">Borg / Restic</h3>
+                    <p class="card-text">
+                        Современные дедуплицирующие бэкапы. Шифрование,
+                        снапшоты, инкремент &laquo;из коробки&raquo;.
+                    </p>
+                </article>
+            </div>
+
+            <h3 class="subsection-title">Для Windows</h3>
+            <div class="cards">
+                <article class="card">
+                    <h3 class="card-title">Windows Backup</h3>
+                    <p class="card-text">
+                        Встроенное решение. Подходит для домашних задач
+                        и небольших офисов.
+                    </p>
+                </article>
+                <article class="card">
+                    <h3 class="card-title">Robocopy</h3>
+                    <p class="card-text">
+                        Консольная утилита для синхронизации файлов.
+                        Аналог rsync, но с другим синтаксисом.
+                    </p>
+                </article>
+                <article class="card">
+                    <h3 class="card-title">Veeam / Acronis</h3>
+                    <p class="card-text">
+                        Корпоративные системы. Работают с виртуальными
+                        машинами, СХД и облаком.
+                    </p>
+                </article>
+            </div>
+
+            <h3 class="subsection-title">Универсальные</h3>
+            <ul class="skills-list">
+                <li class="skills-item"><strong>Bacula</strong> &mdash; старая, но могучая система для крупных сетей.
+                </li>
+                <li class="skills-item"><strong>Duplicity</strong> &mdash; инкрементальные зашифрованные бэкапы.</li>
+                <li class="skills-item"><strong>Amanda</strong> &mdash; кроссплатформенный ветеран.</li>
+                <li class="skills-item"><strong>Rclone</strong> &mdash; синхронизация с облаками (S3, Google Drive,
+                    Yandex Disk).</li>
+            </ul>
+        </section>
+
+        <section class="section section-alt">
+            <h2 class="section-title">Практика: скрипт на bash</h2>
+            <p class="section-text">
+                Простой, но рабочий скрипт: сжимает каталог <code>/etc</code>, добавляет дату,
+                удаляет копии старше 30 дней, отправляет результат на удалённый сервер.
+            </p>
+
+            <pre class="code-block"><code>#!/bin/bash
+# Простой бэкап каталога /etc с ротацией и синхронизацией
+
+BACKUP_DIR="/backup"
+DATE=$(date +%F_%H-%M)
+ARCHIVE="$BACKUP_DIR/etc-$DATE.tar.gz"
+REMOTE="user@backup-server:/storage/"
+
+# 1. Создать архив
+tar -czf "$ARCHIVE" /etc
+
+# 2. Удалить архивы старше 30 дней
+find "$BACKUP_DIR" -name "etc-*.tar.gz" -mtime +30 -delete
+
+# 3. Отправить на удалённый сервер
+rsync -avz "$ARCHIVE" "$REMOTE"
+
+echo "Готово: $ARCHIVE"</code></pre>
+
+            <h3 class="subsection-title">Что важно в этом скрипте</h3>
+            <ul class="skills-list">
+                <li class="skills-item">Дата в имени файла &mdash; легко найти нужную копию.</li>
+                <li class="skills-item">Ротация через <code>find</code> &mdash; старые копии удаляются сами.</li>
+                <li class="skills-item">Отправка на другой сервер &mdash; выполняется правило 3-2-1.</li>
+                <li class="skills-item">Скрипт можно поставить в <code>cron</code> и забыть о нём.</li>
+            </ul>
+
+            <p class="note">
+                <ins>Совет:</ins> для production-нагрузок лучше сразу взять <strong>Borg</strong>
+                или <strong>Restic</strong> &mdash; они делают дедупликацию, шифрование и снапшоты
+                &laquo;из коробки&raquo;. Домашний скрипт хорош для обучения.
+            </p>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Восстановление данных</h2>
+            <p class="section-text">
+                Бэкап существует не для того, чтобы &laquo;лежать&raquo;, а для того, чтобы из него
+                восстановили данные. В момент аварии у вас не будет времени на изучение
+                документации &mdash; всё должно быть отработано заранее.
+            </p>
+
+            <h3 class="subsection-title">Правила восстановления</h3>
+            <ol class="skills-list">
+                <li class="skills-item">Регулярно тестировать восстановление &mdash; минимум раз в квартал.</li>
+                <li class="skills-item">Вести документацию: что, откуда и как восстанавливается.</li>
+                <li class="skills-item">Хранить инструкции отдельно от инфраструктуры &mdash; на случай, если всё упало.
+                </li>
+                <li class="skills-item">Проверять контрольные суммы и целостность архивов.</li>
+                <li class="skills-item">Уметь восстановить отдельный файл, а не только всю систему.</li>
+            </ol>
+
+            <blockquote class="quote">
+                &laquo;Стоимость бэкапа всегда меньше стоимости его отсутствия.
+                Просто об этом вспоминают в самый неподходящий момент.&raquo;
+            </blockquote>
+        </section>
+
+        <section class="section section-alt">
+            <h2 class="section-title">Типичные ошибки</h2>
+            <p class="section-text">
+                Даже опытные администраторы иногда наступают на эти грабли.
+                Лучше учиться на чужих.
+            </p>
+
+            <ul class="skills-list">
+                <li class="skills-item">
+                    <strong>Бэкап на том же диске.</strong> Отказ диска &mdash; и копий нет.
+                </li>
+                <li class="skills-item">
+                    <strong>Бэкап всегда онлайн.</strong> Ransomware зашифрует и оригинал, и копию.
+                </li>
+                <li class="skills-item">
+                    <strong>Нет проверки восстановления.</strong> Архив может оказаться битым.
+                </li>
+                <li class="skills-item">
+                    <strong>Нет ротации.</strong> Диск переполнится, и новые копии не создадутся.
+                </li>
+                <li class="skills-item">
+                    <strong>Нет шифрования.</strong> Бэкап уехал в облако, а вместе с ним &mdash; и данные.
+                </li>
+                <li class="skills-item">
+                    <strong>Забыли про базы данных.</strong> Просто скопировать файлы БД недостаточно.
+                </li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Навигация по главам</h2>
+            <div class="chapter-nav">
+                <a class="chapter-link chapter-link-prev" href="./security.html">
+                    <span class="chapter-label">&larr; Предыдущая глава</span>
+                    <span class="chapter-title">Информационная безопасность</span>
+                </a>
+                <a class="chapter-link chapter-link-next" href="./virtualization.html">
+                    <span class="chapter-label">Следующая глава &rarr;</span>
+                    <span class="chapter-title">Виртуализация и контейнеры</span>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer" id="contacts">
+        <div class="container footer-grid">
+            <div class="footer-column">
+                <h4 class="footer-title">О проекте</h4>
+                <p class="footer-text">
+                    Учебные заметки по системному администрированию.
+                    Материалы предоставлены в образовательных целях.
+                </p>
+            </div>
+            <div class="footer-column">
+                <h4 class="footer-title">Разделы</h4>
+                <ul class="footer-list">
+                    <li class="footer-item"><a class="footer-link" href="./index.html">Главная</a></li>
+                    <li class="footer-item"><a class="footer-link" href="./security.html">Безопасность</a></li>
+                    <li class="footer-item"><a class="footer-link" href="./backup.html">Бэкапы</a></li>
+                    <li class="footer-item"><a class="footer-link" href="./tools.html">Инструменты</a></li>
+                    <li class="footer-item"><a class="footer-link" href="./gallery.html">Галерея</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4 class="footer-title">Связь</h4>
+                <p class="footer-text">
+                    Email: <a class="footer-link" href="mailto:admin@example.com">admin@example.com</a>
+                </p>
+            </div>
+            <div class="footer-bottom">
+                <p class="copyright">&copy; 2026 SysAdmin Notes. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
