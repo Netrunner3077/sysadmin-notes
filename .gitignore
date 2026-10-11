@@ -1,0 +1,23 @@
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# ОС
+.DS_Store
+Thumbs.db
+
+# Логи
+*.log
+
+# Временные
+sandbox/
+*.tmp
+
+# Composer
+/vendor/
+composer.lock
+
+# Секреты
+.env
+.env.local
