@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/main.css">
+    <title>Виртуализация и контейнеры &mdash; SysAdmin Notes</title>
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="container">
+            <div class="logo">
+                <span class="logo-mark">SA</span>
+                <span class="logo-text">SysAdmin Notes</span>
+            </div>
+            
+            <input type="checkbox" id="menu-toggle" class="menu-toggle" hidden>
+            <label for="menu-toggle" class="burger" aria-label="Открыть меню">
+                <span></span><span></span><span></span>
+            </label>
+            
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li class="nav-item"><a class="nav-link" href="./index.html">Главная</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./intro.html">Введение</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./os.html">ОС</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./networks.html">Сети</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./tools.html">Инструменты</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./security.html">Безопасность</a></li>
+                    <li class="nav-item nav-item-dropdown">
+                        <a class="nav-link nav-link-dropdown" href="#more" aria-haspopup="true" aria-expanded="false">
+                            Ещё <span class="dropdown-arrow">&dtrif;</span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-link" href="./backup.html">Резервное копирование</a></li>
+                            <li><a class="dropdown-link" href="./virtualization.html">Виртуализация</a></li>
+                            <li><a class="dropdown-link" href="./automation.html">Автоматизация</a></li>
+                            <li><a class="dropdown-link" href="./resources.html">Ресурсы</a></li>
+                            <li><a class="dropdown-link" href="./gallery.html">Галерея</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="./auth.html">Вход</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="content">
+        <section class="hero">
+            <h1 class="hero-title">Виртуализация и контейнеры</h1>
+            <p class="hero-subtitle">
+                Как запустить несколько систем на одном железе, чем виртуальная машина
+                отличается от контейнера и почему Docker изменил индустрию.
+                Глава 7 учебного курса.
+            </p>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Что такое виртуализация</h2>
+            <p class="section-text">
+                Виртуализация &mdash; это технология, позволяющая запускать несколько
+                изолированных операционных систем на одном физическом сервере.
+                Каждая такая система называется <strong>виртуальной машиной</strong> (VM)
+                и думает, что работает на настоящем &laquo;железе&raquo;.
+            </p>
+
+            <p class="section-text">
+                До виртуализации один сервер обслуживал одну задачу. Сегодня на одной
+                стойке умещается десятки виртуальных машин &mdash; это экономит деньги,
+                место и электроэнергию.
+            </p>
+
+            <div class="cards">
+                <article class="card">
+                    <h3 class="card-title">Экономия ресурсов</h3>
+                    <p class="card-text">
+                        Один мощный сервер заменяет пять слабых. Загрузка CPU
+                        и памяти используется эффективнее.
+                    </p>
+                </article>
+                <article class="card">
+                    <h3 class="card-title">Изоляция</h3>
+                    <p class="card-text">
+                        Падение одной VM не затрагивает другие. Удобно для
+                        тестирования и разделения сред.
+                    </p>
+                </article>
+                <article class="card">
+                    <h3 class="card-title">Гибкость</h3>
+                    <p class="card-text">
+                        Виртуалку можно клонировать, перенести на другой хост
+                        или откатить к снапшоту за минуты.
+                    </p>
+                </article>
+            </div>
+        </section>
+
+        <section class="section section-alt">
+            <h2 class="section-title">Гипервизоры</h2>
+            <p class="section-text">
+                Гипервизор &mdash; это программа, которая управляет виртуальными машинами
+                и распределяет между ними физические ресурсы. По типу работы их делят
+                на два вида.
+            </p>
+
+            <h3 class="subsection-title">Тип 1 (bare-metal)</h3>
+            <p class="section-text">
+                Работает напрямую на железе, без хостовой ОС. Максимальная
+                производительность, используется в дата-центрах.
+            </p>
+            <ul class="osi-list">
+                <li class="osi-item"><span class="osi-num">VM</span> VMware ESXi &mdash; промышленный стандарт</li>
+                <li class="osi-item"><span class="osi-num">HV</span> Microsoft Hyper-V Server &mdash; бесплатная версия
+                </li>
+                <li class="osi-item"><span class="osi-num">X</span> Xen / XenServer &mdash; основа облаков</li>
+                <li class="osi-item"><span class="osi-num">KVM</span> Kernel-based Virtual Machine &mdash; встроен в
+                    Linux</li>
+                <li class="osi-item"><span class="osi-num">PVE</span> Proxmox VE &mdash; open-source решение на KVM</li>
+            </ul>
+
+            <h3 class="subsection-title">Тип 2 (hosted)</h3>
+            <p class="section-text">
+                Работает как приложение поверх обычной ОС. Удобно для разработки
+                и обучения, но уступает в производительности.
+            </p>
+            <ul class="osi-list">
+                <li class="osi-item"><span class="osi-num">VB</span> Oracle VirtualBox &mdash; бесплатный,
+                    кроссплатформенный</li>
+                <li class="osi-item"><span class="osi-num">VW</span> VMware Workstation / Fusion &mdash; платный, мощный
+                </li>
+                <li class="osi-item"><span class="osi-num">PL</span> Parallels Desktop &mdash; популярен на macOS</li>
+                <li class="osi-item"><span class="osi-num">HV</span> Hyper-V в Windows 10/11 Pro &mdash; встроенный</li>
+            </ul>
+
+            <blockquote class="quote">
+                &laquo;Для обучения достаточно VirtualBox. В продакшене работают на KVM,
+                ESXi или Proxmox &mdash; там, где важна производительность.&raquo;
+            </blockquote>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Виртуальная машина vs контейнер</h2>
+            <p class="section-text">
+                До появления Docker путаница между VM и контейнерами была редкостью.
+                Сегодня это, пожалуй, главный вопрос новичка. Ключевое отличие &mdash;
+                что именно изолируется.
+            </p>
+
+            <table class="compare-table">
+                <thead>
+                    <tr>
+                        <th class="th-feature">Критерий</th>
+                        <th class="th-windows">Виртуальная машина</th>
+                        <th class="th-linux">Контейнер</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="td-feature">Что внутри</td>
+                        <td>Полная ОС + приложение</td>
+                        <td>Только приложение и его зависимости</td>
+                    </tr>
+                    <tr>
+                        <td class="td-feature">Ядро</td>
+                        <td>Своё, отдельное</td>
+                        <td>Общее с хост-системой</td>
+                    </tr>
+                    <tr>
+                        <td class="td-feature">Размер</td>
+                        <td>Гигабайты</td>
+                        <td>Мегабайты</td>
+                    </tr>
+                    <tr>
+                        <td class="td-feature">Запуск</td>
+                        <td>Минуты</td>
+                        <td>Секунды</td>
+                    </tr>
+                    <tr>
+                        <td class="td-feature">Изоляция</td>
+                        <td>Полная</td>
+                        <td>Частичная, на уровне процессов</td>
+                    </tr>
+                    <tr>
+                        <td class="td-feature">Когда выбирать</td>
+                        <td>Разные ОС, жёсткая изоляция</td>
+                        <td>Микросервисы, CI/CD, тесты</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p class="note">
+                <ins>Простая аналогия:</ins> виртуальная машина &mdash; это отдельная квартира
+                со своей кухней и санузлом. Контейнер &mdash; комната в общежитии: своя
+                кровать и шкаф, а кухня и душ общие с хост-системой.
+            </p>
+        </section>
+
+        <section class="section section-alt">
+            <h2 class="section-title">Docker: контейнеры для всех</h2>
+            <p class="section-text">
+                Docker &mdash; это платформа для упаковки, доставки и запуска приложений
+                в контейнерах. Идея проста: приложение со всеми зависимостями
+                собирается в <strong>образ</strong>, который запускается одинаково
+                где угодно &mdash; на ноутбуке разработчика, в тестовой среде и в продакшене.
+            </p>
+
+            <h3 class="subsection-title">Ключевые понятия</h3>
+            <div class="cards">
+                <article class="card">
+                    <h3 class="card-title">Образ (Image)</h3>
+                    <p class="card-text">
+                        Шаблон только для чтения. Содержит код, библиотеки,
+                        настройки. Строится по <code>Dockerfile</code>.
+                    </p>
+                </article>
+                <article class="card">
+                    <h3 class="card-title">Контейнер</h3>
+                    <p class="card-text">
+                        Запущенный экземпляр образа. Можно запускать
+                        десятки контейнеров из одного образа.
+                    </p>
+                </article>
+                <article class="card">
+                    <h3 class="card-title">Реестр (Registry)</h3>
+                    <p class="card-text">
+                        Хранилище образов. Docker Hub &mdash; публичный,
+                        можно поднять свой приватный.
+                    </p>
+                </article>
+            </div>
+
+            <h3 class="subsection-title">Основные команды</h3>
+            <pre class="code-block"><code># Скачать образ из Docker Hub
+docker pull nginx:latest
+
+# Запустить контейнер
+docker run -d -p 8080:80 --name web nginx
+
+# Посмотреть запущенные контейнеры
+docker ps
+
+# Остановить и удалить
+docker stop web && docker rm web
+
+# Собрать свой образ из Dockerfile
+docker build -t my-app:1.0 .
+
+# Залогиниться в реестр и запушить образ
+docker login
+docker push my-app:1.0</code></pre>
+
+            <h3 class="subsection-title">Плюсы Docker</h3>
+            <ul class="skills-list">
+                <li class="skills-item">&laquo;Работает у меня &mdash; работает везде&raquo; &mdash; единая среда.</li>
+                <li class="skills-item">Быстрый запуск и остановка приложений.</li>
+                <li class="skills-item">Изоляция сервисов друг от друга.</li>
+                <li class="skills-item">Экономия ресурсов по сравнению с VM.</li>
+                <li class="skills-item">Готовая экосистема образов на Docker Hub.</li>
+                <li class="skills-item">Легко масштабировать горизонтально.</li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Оркестрация: Kubernetes</h2>
+            <p class="section-text">
+                Когда контейнеров становится десятки и сотни, нужен инструмент,
+                который управляет ими автоматически. Здесь на сцену выходит
+                <strong>Kubernetes</strong> (K8s) &mdash; стандарт оркестрации контейнеров.
+            </p>
+
+            <h3 class="subsection-title">Что умеет Kubernetes</h3>
+            <ul class="osi-list">
+                <li class="osi-item"><span class="osi-num">1</span> Автоматически распределять контейнеры по узлам</li>
+                <li class="osi-item"><span class="osi-num">2</span> Перезапускать упавшие контейнеры</li>
+                <li class="osi-item"><span class="osi-num">3</span> Масштабировать нагрузку по нагрузке</li>
+                <li class="osi-item"><span class="osi-num">4</span> Управлять сетью между контейнерами</li>
+                <li class="osi-item"><span class="osi-num">5</span> Хранить секреты и конфигурации</li>
+                <li class="osi-item"><span class="osi-num">6</span> Обновлять приложения без простоя</li>
+            </ul>
+
+            <h3 class="subsection-title">Когда K8s не нужен</h3>
+            <p class="section-text">
+                Kubernetes &mdash; инструмент для крупных систем. Для одного-двух
+                контейнеров его сложность не оправдана. Альтернативы проще:
+            </p>
+
+            <div class="cards">
+                <article class="card">
+                    <h3 class="card-title">Docker Compose</h3>
+                    <p class="card-text">
+                        Запуск нескольких контейнеров на одной машине
+                        через YAML-файл. Идеально для dev-среды.
+                    </p>
+                </article>
+                <article class="card">
+                    <h3 class="card-title">Docker Swarm</h3>
+                    <p class="card-text">
+                        Встроенная оркестрация в Docker. Проще K8s,
+                        но менее функциональна.
+                    </p>
+                </article>
+                <article class="card">
+                    <h3 class="card-title">Nomad</h3>
+                    <p class="card-text">
+                        Альтернатива от HashiCorp. Запускает не только
+                        контейнеры, но и обычные приложения.
+                    </p>
+                </article>
+            </div>
+        </section>
+
+        <section class="section section-alt">
+            <h2 class="section-title">Где это применяется</h2>
+            <p class="section-text">
+                Виртуализация и контейнеры сегодня везде &mdash; от домашних лабораторий
+                до облаков на тысячи серверов. Несколько типичных сценариев.
+            </p>
+
+            <h3 class="subsection-title">Тестовая лаборатория</h3>
+            <p class="section-text">
+                Домашний сервер с Proxmox позволяет развернуть Windows Server,
+                Ubuntu Server и пару клиентских машин за час. Идеально для подготовки
+                к сертификациям и экспериментов с сетью.
+            </p>
+
+            <h3 class="subsection-title">Разработка и CI/CD</h3>
+            <p class="section-text">
+                Docker даёт разработчикам одинаковую среду на всех этапах:
+                локально, на тестовом сервере, в продакшене. CI-пайплайны собирают
+                образы и автоматически выкатывают их.
+            </p>
+
+            <h3 class="subsection-title">Микросервисная архитектура</h3>
+            <p class="section-text">
+                Большие приложения разбиваются на десятки маленьких сервисов,
+                каждый в своём контейнере. Kubernetes управляет ими как единой
+                системой.
+            </p>
+
+            <h3 class="subsection-title">Облачные платформы</h3>
+            <p class="section-text">
+                AWS, Azure, Google Cloud построены на виртуализации. Крупные провайдеры
+                уже несколько лет предлагают managed Kubernetes &mdash; арендовать
+                кластеры в один клик.
+            </p>
+
+            <blockquote class="quote">
+                &laquo;Разработчик упаковал приложение в контейнер в пятницу вечером.
+                В понедельник оно запустилось в продакшене так же, как у него
+                на ноутбуке. Это и есть магия контейнеров.&raquo;
+            </blockquote>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Практический совет</h2>
+            <p class="section-text">
+                Соберите домашний стенд: Proxmox VE на старом компьютере или
+                VirtualBox на текущем ноутбуке. Создайте виртуальную машину с Ubuntu,
+                установите Docker, запустите пару контейнеров, объедините их
+                через <code>docker compose</code>. Это даст практическое понимание,
+                которое не заменят никакие книги.
+            </p>
+
+            <p class="note">
+                <ins>Совет:</ins> прежде чем идти в Kubernetes, разберитесь с Docker
+                и <code>docker compose</code>. K8s &mdash; это уже следующий уровень,
+                и без базы он покажется набором магических YAML-файлов.
+            </p>
+        </section>
+
+        <section class="section section-alt">
+            <h2 class="section-title">Навигация по главам</h2>
+            <div class="chapter-nav">
+                <a class="chapter-link chapter-link-prev" href="./backup.html">
+                    <span class="chapter-label">&larr; Предыдущая глава</span>
+                    <span class="chapter-title">Резервное копирование</span>
+                </a>
+                <a class="chapter-link chapter-link-next" href="./automation.html">
+                    <span class="chapter-label">Следующая глава &rarr;</span>
+                    <span class="chapter-title">Скриптинг и автоматизация</span>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer" id="contacts">
+        <div class="container footer-grid">
+            <div class="footer-column">
+                <h4 class="footer-title">О проекте</h4>
+                <p class="footer-text">
+                    Учебные заметки по системному администрированию.
+                    Материалы предоставлены в образовательных целях.
+                </p>
+            </div>
+            <div class="footer-column">
+                <h4 class="footer-title">Разделы</h4>
+                <ul class="footer-list">
+                    <li class="footer-item"><a class="footer-link" href="./index.html">Главная</a></li>
+                    <li class="footer-item"><a class="footer-link" href="./networks.html">Сети</a></li>
+                    <li class="footer-item"><a class="footer-link" href="./security.html">Безопасность</a></li>
+                    <li class="footer-item"><a class="footer-link" href="./virtualization.html">Виртуализация</a></li>
+                    <li class="footer-item"><a class="footer-link" href="./gallery.html">Галерея</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4 class="footer-title">Связь</h4>
+                <p class="footer-text">
+                    Email: <a class="footer-link" href="mailto:admin@example.com">admin@example.com</a>
+                </p>
+            </div>
+            <div class="footer-bottom">
+                <p class="copyright">&copy; 2026 SysAdmin Notes. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

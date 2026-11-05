@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/main.css">
+    <title>Системное администрирование информационно-коммуникативных и операционных систем Windows &amp; Linux</title>
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="container">
+            <div class="logo">
+                <span class="logo-mark">SA</span>
+                <span class="logo-text">SysAdmin Notes</span>
+            </div>
+
+            <input type="checkbox" id="menu-toggle" class="menu-toggle" hidden>
+            <label for="menu-toggle" class="burger" aria-label="Открыть меню">
+                <span></span><span></span><span></span>
+            </label>
+
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li class="nav-item"><a class="nav-link" href="./index.html">Главная</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./intro.html">Введение</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./os.html">ОС</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./networks.html">Сети</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./tools.html">Инструменты</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./security.html">Безопасность</a></li>
+                    <li class="nav-item nav-item-dropdown">
+                        <a class="nav-link nav-link-dropdown" href="#more" aria-haspopup="true" aria-expanded="false">
+                            Ещё <span class="dropdown-arrow">&dtrif;</span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-link" href="./backup.html">Резервное копирование</a></li>
+                            <li><a class="dropdown-link" href="./virtualization.html">Виртуализация</a></li>
+                            <li><a class="dropdown-link" href="./automation.html">Автоматизация</a></li>
+                            <li><a class="dropdown-link" href="./resources.html">Ресурсы</a></li>
+                            <li><a class="dropdown-link" href="./gallery.html">Галерея</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="./auth.html">Вход</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="content">
+        <section class="hero" id="intro">
+            <h1 class="hero-title">Системное администрирование информационно-коммуникативных и операционных систем
+                Windows &amp; Linux</h1>
+            <p class="hero-subtitle">
+                <strong>Системный администратор</strong> &mdash; это специалист, который обеспечивает бесперебойную
+                работу
+                информационной инфраструктуры организации. Он настраивает серверы, следит за состоянием
+                сетей, управляет учётными записями пользователей и защищает данные от угроз. Работа сисадмина
+                требует терпения, внимательности и глубокого понимания того, как взаимодействуют между собой
+                операционные системы, приложения и &laquo;железо&raquo;.
+            </p>
+            <a class="btn btn-primary" href="#start">Введение в профессию</a>
+        </section>
+
+        <section class="section" id="start">
+            <h2 class="section-title">Кто такой системный администратор?</h2>
+            <p class="section-text">
+                В зависимости от размера компании задачи сисадмина могут сильно различаться. В небольшой
+                фирме один человек совмещает роли эникейщика, сетевого инженера и администратора баз
+                данных. В крупной корпорации эти обязанности распределены между целыми отделами.
+            </p>
+            <h3 class="subsection-title">Ключевые обязанности сисадмина</h3>
+            <ul class="skills-list">
+                <li class="skills-item">Установка и обновление операционных систем <strong>Windows</strong> и
+                    <strong>Linux</strong>.
+                </li>
+                <li class="skills-item">Настройка сетевого оборудования: маршрутизаторов, коммутаторов,
+                    <strong>VPN</strong>.
+                </li>
+                <li class="skills-item">Резервное копирование и восстановление данных.</li>
+                <li class="skills-item">Мониторинг производительности серверов и рабочих станций.</li>
+                <li class="skills-item">Управление правами доступа и политиками безопасности.</li>
+                <li class="skills-item">Документирование конфигураций и инцидентов.</li>
+            </ul>
+            <h3 class="subsection-title">Базовые навыки для старта</h3>
+            <ol class="skills-list">
+                <li class="skills-item">Уверенное владение командной строкой (<code>cmd</code>, <code>PowerShell</code>,
+                    <code>bash</code>).
+                </li>
+                <li class="skills-item">Понимание модели <code>OSI</code> и стека протоколов <code>TCP/IP</code>.</li>
+                <li class="skills-item">Работа с виртуальными машинами: <code>VMware</code>, <code>VirtualBox</code>,
+                    <code>Hyper-V</code>.
+                </li>
+                <li class="skills-item">Знание основ <code>Active Directory</code> и <code>LDAP</code>.</li>
+                <li class="skills-item">Умение читать логи и пользоваться системами мониторинга.</li>
+            </ol>
+        </section>
+
+        <section class="section section-alt" id="advice">
+            <h2 class="section-title">Полезный совет новичку</h2>
+            <p class="section-text">
+                Начинайте с <ins>лаборатории дома</ins>: поставьте <strong>VirtualBox</strong>, поднимите пару
+                виртуальных
+                машин — <strong>Windows Server</strong> и <strong>Ubuntu Server</strong>.
+                Пробуйте, ломайте, восстанавливайте.
+            </p>
+
+            <h3 class="subsection-title">Только через практику приходит настоящее понимание.</h3>
+
+            <img src="../img/KSA.jpg" alt="Схема взаимодействия клиента, сервера и сетевого оборудования">
+        </section>
+
+        <section class="section" id="OS">
+            <h2 class="section-title">Windows и Linux: два мира &mdash; одна цель</h2>
+            <p class="section-text">
+                Операционные системы семейства <strong>Windows</strong> и <strong>Linux</strong> решают схожие задачи,
+                но подходят к ним по-
+                разному. <strong>Windows</strong> славится удобным графическим интерфейсом и тесной интеграцией с
+                корпоративными сервисами <strong>Microsoft</strong>. <strong>Linux</strong> ценится за гибкость,
+                открытость и стабильность при
+                работе под высокой нагрузкой.
+            </p>
+            <h3 class="subsection-title">Краткое сравнение:</h3>
+            <table class="compare-table">
+                <thead>
+                    <tr>
+                        <th class="th-feature"></th>
+                        <th class="th-windows">Windows Server</th>
+                        <th class="th-linux">Linux (на примере Ubuntu Server)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="td-feature">Интерфейс</td>
+                        <td>Графический + PowerShell</td>
+                        <td>Преимущественно консоль</td>
+                    </tr>
+                    <tr>
+                        <td class="td-feature">Пакетный менеджер</td>
+                        <td>winget / MSI</td>
+                        <td>apt / yum / dnf</td>
+                    </tr>
+                    <tr>
+                        <td class="td-feature">Типичное применение</td>
+                        <td>Active Directory, Exchange</td>
+                        <td>Веб-серверы, контейнеры</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p class="section-text">
+                Подробнее про каждую из систем можно почитать в <a class="doc-link" target="_blank"
+                    href="https://learn.microsoft.com/ru-ru/">официальной документации Microsoft</a> и в
+                <a class="doc-link" target="_blank" href="https://ubuntu.com/server/docs/">руководстве для
+                    администраторов Ubuntu.</a>
+            </p>
+            <h3 class="subsection-title">Что важно помнить</h3>
+            <blockquote class="quote">
+                <i>Технологии меняются быстро</i>, но фундаментальные принципы остаются: понимание сети,
+                файловой системы и процессов пригодится всегда. Не гонитесь за модными инструментами &mdash;
+                сначала освойте базу.
+            </blockquote>
+        </section>
+
+        <section class="section section-alt" id="end">
+            <h2 class="section-title">Заключение</h2>
+            <p class="section-text">
+                <strong>Системное администрирование</strong> &mdash; это не просто работа с &laquo;железом&raquo; и
+                софтом. Это
+                искусство
+                поддерживать порядок там, где всё стремится к хаосу. Если вам нравится разбираться в деталях,
+                решать головоломки и видеть результат своего труда &mdash; эта профессия для вас.
+            </p>
+            <p class="note"><strong>Удачи в обучении!</strong></p>
+        </section>
+
+        <section class="section section-alt">
+            <h2 class="section-title">Навигация по главам</h2>
+            <div class="chapter-nav">
+                <a class="chapter-link chapter-link-prev" href="./index.html">
+                    <span class="chapter-label">&larr; На главную</span>
+                    <span class="chapter-title">Оглавление курса</span>
+                </a>
+                <a class="chapter-link chapter-link-next" href="./os.html">
+                    <span class="chapter-label">Следующая глава &rarr;</span>
+                    <span class="chapter-title">Windows и Linux изнутри</span>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer" id="contacts">
+        <div class="container footer-grid">
+            <div class="footer-column">
+                <h4 class="footer-title">О проекте</h4>
+                <p class="footer-text">
+                    Учебные заметки по системному администрированию.
+                    Материалы предоставлены в образовательных целях.
+                </p>
+            </div>
+            <div class="footer-column">
+                <h4 class="footer-title">Разделы</h4>
+                <ul class="footer-list">
+                    <li class="footer-item"><a class="footer-link" href="./index.html">Главная</a></li>
+                    <li class="footer-item"><a class="footer-link" href="./intro.html">Введение</a></li>
+                    <li class="footer-item"><a class="footer-link" href="./tools.html">Инструменты</a></li>
+                    <li class="footer-item"><a class="footer-link" href="./auth.html">Вход</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4 class="footer-title">Связь</h4>
+                <p class="footer-text">
+                    Email: <a class="footer-link" href="mailto:admin@example.com">admin@example.com</a>
+                </p>
+            </div>
+            <div class="footer-bottom">
+                <p class="copyright">&copy; 2026 SysAdmin Notes. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

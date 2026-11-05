@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/main.css">
+    <title>SysAdmin Notes &mdash; главная</title>
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="container">
+            <div class="logo">
+                <span class="logo-mark">SA</span>
+                <span class="logo-text">SysAdmin Notes</span>
+            </div>
+
+            <input type="checkbox" id="menu-toggle" class="menu-toggle" hidden>
+            <label for="menu-toggle" class="burger" aria-label="Открыть меню">
+                <span></span><span></span><span></span>
+            </label>
+
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li class="nav-item"><a class="nav-link" href="./index.html">Главная</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./intro.html">Введение</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./os.html">ОС</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./networks.html">Сети</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./tools.html">Инструменты</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./security.html">Безопасность</a></li>
+                    <li class="nav-item nav-item-dropdown">
+                        <a class="nav-link nav-link-dropdown" href="#more" aria-haspopup="true" aria-expanded="false">
+                            Ещё <span class="dropdown-arrow">&dtrif;</span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-link" href="./backup.html">Резервное копирование</a></li>
+                            <li><a class="dropdown-link" href="./virtualization.html">Виртуализация</a></li>
+                            <li><a class="dropdown-link" href="./automation.html">Автоматизация</a></li>
+                            <li><a class="dropdown-link" href="./resources.html">Ресурсы</a></li>
+                            <li><a class="dropdown-link" href="./gallery.html">Галерея</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="./auth.html">Вход</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="content">
+        <section class="hero">
+            <h1 class="hero-title">SysAdmin Notes</h1>
+            <p class="hero-subtitle">
+                Полный курс о системном администрировании Windows &amp; Linux &mdash;
+                от знакомства с профессией до автоматизации и CI/CD.
+                Девять глав, практические примеры, реальные инструменты.
+            </p>
+            <a class="btn btn-primary" href="./intro.html">Начать курс</a>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">О курсе</h2>
+            <p class="section-text">
+                Курс построен как последовательный учебник: каждая глава опирается на предыдущую,
+                а в конце каждой главы есть навигация «предыдущая / следующая». Материал рассчитан
+                на новичков, но будет полезен и практикующим администраторам для систематизации знаний.
+            </p>
+
+            <ul class="skills-list">
+                <li class="skills-item">Структурированный материал без воды &mdash; только суть.</li>
+                <li class="skills-item">Параллельные примеры для Windows и Linux.</li>
+                <li class="skills-item">Готовые команды и скрипты, которые можно запустить сразу.</li>
+                <li class="skills-item">Схемы, таблицы и сравнения для сложных тем.</li>
+                <li class="skills-item">Практические советы по домашней лаборатории и карьере.</li>
+            </ul>
+        </section>
+
+        <section class="section section-alt">
+            <h2 class="section-title">Часть I. Знакомство</h2>
+
+            <div class="cards">
+                <article class="card">
+                    <h3 class="card-title">Глава 1. Введение в профессию</h3>
+                    <p class="card-text">
+                        Кто такой системный администратор, чем занимается, какие навыки
+                        нужны для старта. Ключевые обязанности и первые шаги в профессии.
+                    </p>
+                    <a class="doc-link" href="./intro.html">Читать главу &rarr;</a>
+                </article>
+
+                <article class="card">
+                    <h3 class="card-title">Глава 2. Windows и Linux изнутри</h3>
+                    <p class="card-text">
+                        Архитектура ОС, ядро, драйверы, оболочки. Файловые системы и их
+                        сравнение. Иерархия каталогов. Пакетные менеджеры.
+                    </p>
+                    <a class="doc-link" href="./os.html">Читать главу &rarr;</a>
+                </article>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Часть II. Инфраструктура</h2>
+
+            <div class="cards">
+                <article class="card">
+                    <h3 class="card-title">Глава 3. Сети и протоколы</h3>
+                    <p class="card-text">
+                        Модель OSI и стек TCP/IP. IP-адресация, маски, CIDR. Ключевые
+                        протоколы и порты. Маршрутизация и сетевые службы.
+                    </p>
+                    <a class="doc-link" href="./networks.html">Читать главу &rarr;</a>
+                </article>
+
+                <article class="card">
+                    <h3 class="card-title">Глава 4. Инструменты и утилиты</h3>
+                    <p class="card-text">
+                        Диагностика сети, мониторинг системы, работа с файлами.
+                        Что важно освоить в первую очередь каждому администратору.
+                    </p>
+                    <a class="doc-link" href="./tools.html">Читать главу &rarr;</a>
+                </article>
+
+                <article class="card">
+                    <h3 class="card-title">Глава 5. Информационная безопасность</h3>
+                    <p class="card-text">
+                        Модель угроз и типы атак. Файрволы, аутентификация, шифрование.
+                        Аудит, логирование, базовая защита сервера.
+                    </p>
+                    <a class="doc-link" href="./security.html">Читать главу &rarr;</a>
+                </article>
+
+                <article class="card">
+                    <h3 class="card-title">Глава 6. Резервное копирование</h3>
+                    <p class="card-text">
+                        Правило 3-2-1 и его современное расширение. Виды бэкапов,
+                        RPO и RTO, инструменты для Windows и Linux.
+                    </p>
+                    <a class="doc-link" href="./backup.html">Читать главу &rarr;</a>
+                </article>
+            </div>
+        </section>
+
+        <section class="section section-alt">
+            <h2 class="section-title">Часть III. Продвинутые темы</h2>
+
+            <div class="cards">
+                <article class="card">
+                    <h3 class="card-title">Глава 7. Виртуализация и контейнеры</h3>
+                    <p class="card-text">
+                        Гипервизоры Type 1 и Type 2. VM против контейнера. Docker,
+                        Docker Compose, Kubernetes и когда K8s не нужен.
+                    </p>
+                    <a class="doc-link" href="./virtualization.html">Читать главу &rarr;</a>
+                </article>
+
+                <article class="card">
+                    <h3 class="card-title">Глава 8. Скриптинг и автоматизация</h3>
+                    <p class="card-text">
+                        Bash и PowerShell. Планировщики cron и Task Scheduler.
+                        Ansible, CI/CD, лучшие практики автоматизации.
+                    </p>
+                    <a class="doc-link" href="./automation.html">Читать главу &rarr;</a>
+                </article>
+
+                <article class="card">
+                    <h3 class="card-title">Глава 9. Полезные ресурсы</h3>
+                    <p class="card-text">
+                        Книги, курсы, документация и сообщества. Практические площадки
+                        и сертификации. Словарь терминов.
+                    </p>
+                    <a class="doc-link" href="./resources.html">Читать главу &rarr;</a>
+                </article>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Дополнительно</h2>
+
+            <div class="cards">
+                <article class="card">
+                    <h3 class="card-title">Галерея</h3>
+                    <p class="card-text">
+                        Серверные стойки, схемы топологий, интерфейсы &mdash; визуальный
+                        взгляд на инфраструктуру.
+                    </p>
+                    <a class="doc-link" href="./gallery.html">Смотреть &rarr;</a>
+                </article>
+
+                <article class="card">
+                    <h3 class="card-title">Личный кабинет</h3>
+                    <p class="card-text">
+                        Регистрация и вход. Сохранение прогресса и получение
+                        новых материалов по мере публикации.
+                    </p>
+                    <a class="doc-link" href="./auth.html">Войти &rarr;</a>
+                </article>
+            </div>
+        </section>
+
+        <section class="section section-alt">
+            <h2 class="section-title">С чего начать</h2>
+            <p class="section-text">
+                Если вы впервые на этом сайте &mdash; откройте первую главу и двигайтесь
+                последовательно. Если хотите сразу к практике &mdash; переходите в раздел
+                «Инструменты» или «Автоматизация».
+            </p>
+
+            <div class="chapter-nav">
+                <a class="chapter-link chapter-link-prev" href="./gallery.html">
+                    <span class="chapter-label">&larr; Заглянуть в галерею</span>
+                    <span class="chapter-title">Как выглядит инфраструктура</span>
+                </a>
+                <a class="chapter-link chapter-link-next" href="./intro.html">
+                    <span class="chapter-label">Начать курс &rarr;</span>
+                    <span class="chapter-title">Глава 1. Введение</span>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer" id="contacts">
+        <div class="container footer-grid">
+            <div class="footer-column">
+                <h4 class="footer-title">О проекте</h4>
+                <p class="footer-text">
+                    Учебные заметки по системному администрированию.
+                    Материалы предоставлены в образовательных целях.
+                </p>
+            </div>
+            <div class="footer-column">
+                <h4 class="footer-title">Разделы</h4>
+                <ul class="footer-list">
+                    <li class="footer-item"><a class="footer-link" href="./intro.html">Введение</a></li>
+                    <li class="footer-item"><a class="footer-link" href="./networks.html">Сети</a></li>
+                    <li class="footer-item"><a class="footer-link" href="./security.html">Безопасность</a></li>
+                    <li class="footer-item"><a class="footer-link" href="./automation.html">Автоматизация</a></li>
+                    <li class="footer-item"><a class="footer-link" href="./resources.html">Ресурсы</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4 class="footer-title">Связь</h4>
+                <p class="footer-text">
+                    Email: <a class="footer-link" href="mailto:admin@example.com">admin@example.com</a>
+                </p>
+            </div>
+            <div class="footer-bottom">
+                <p class="copyright">&copy; 2026 SysAdmin Notes. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

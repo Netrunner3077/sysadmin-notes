@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/main.css">
+    <title>Полезные ресурсы &mdash; SysAdmin Notes</title>
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="container">
+            <div class="logo">
+                <span class="logo-mark">SA</span>
+                <span class="logo-text">SysAdmin Notes</span>
+            </div>
+            
+            <input type="checkbox" id="menu-toggle" class="menu-toggle" hidden>
+            <label for="menu-toggle" class="burger" aria-label="Открыть меню">
+                <span></span><span></span><span></span>
+            </label>
+            
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li class="nav-item"><a class="nav-link" href="./index.html">Главная</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./intro.html">Введение</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./os.html">ОС</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./networks.html">Сети</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./tools.html">Инструменты</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./security.html">Безопасность</a></li>
+                    <li class="nav-item nav-item-dropdown">
+                        <a class="nav-link nav-link-dropdown" href="#more" aria-haspopup="true" aria-expanded="false">
+                            Ещё <span class="dropdown-arrow">&dtrif;</span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-link" href="./backup.html">Резервное копирование</a></li>
+                            <li><a class="dropdown-link" href="./virtualization.html">Виртуализация</a></li>
+                            <li><a class="dropdown-link" href="./automation.html">Автоматизация</a></li>
+                            <li><a class="dropdown-link" href="./resources.html">Ресурсы</a></li>
+                            <li><a class="dropdown-link" href="./gallery.html">Галерея</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="./auth.html">Вход</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="content">
+        <section class="hero">
+            <h1 class="hero-title">Полезные ресурсы</h1>
+            <p class="hero-subtitle">
+                Книги, курсы, документация и сообщества, которые помогут
+                продолжить обучение после этого курса. Глава 9 &mdash; финальная.
+            </p>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">С чего начать</h2>
+            <p class="section-text">
+                Не пытайтесь охватить всё сразу. Выберите одну тему, один ресурс и
+                доведите до практики. Только потом переходите к следующему. Ниже &mdash;
+                маршрут, который работает для большинства новичков.
+            </p>
+
+            <ol class="skills-list">
+                <li class="skills-item">
+                    Пройдите этот курс от начала до конца, не пропуская глав.
+                </li>
+                <li class="skills-item">
+                    Разверните домашнюю лабораторию: VirtualBox + 2–3 виртуальные машины.
+                </li>
+                <li class="skills-item">
+                    Прочитайте одну книгу по Linux и одну по сетям &mdash; не больше.
+                </li>
+                <li class="skills-item">
+                    Пройдите бесплатный вводный курс по выбранной специализации.
+                </li>
+                <li class="skills-item">
+                    Подпишитесь на 2–3 сообщества и читайте их ежедневно.
+                </li>
+                <li class="skills-item">
+                    Начните вести собственные заметки &mdash; как этот сайт.
+                </li>
+            </ol>
+
+            <p class="note">
+                <ins>Совет:</ins> не покупайте дорогие курсы, пока не прошли
+                бесплатные. 90% базовых знаний лежит в открытом доступе &mdash;
+                платить стоит только за структуру и наставника.
+            </p>
+        </section>
+
+        <section class="section section-alt">
+            <h2 class="section-title">Книги</h2>
+            <p class="section-text">
+                Хорошая книга &mdash; это структурированные знания от практика.
+                Вот минимум, который стоит прочитать каждому администратору.
+            </p>
+
+            <h3 class="subsection-title">Для начинающих</h3>
+            <div class="cards">
+                <article class="card">
+                    <h3 class="card-title">&laquo;Linux. Карманный справочник&raquo;</h3>
+                    <p class="card-text">
+                        Скотт Граннеман. Компактный справочник по основным
+                        командам и концепциям Linux. Идеален как настольная книга.
+                    </p>
+                </article>
+                <article class="card">
+                    <h3 class="card-title">&laquo;Компьютерные сети&raquo;</h3>
+                    <p class="card-text">
+                        Эндрю Таненбаум. Классика по сетям. Толстая, но
+                        прочитать стоит &mdash; фундамент на годы вперёд.
+                    </p>
+                </article>
+                <article class="card">
+                    <h3 class="card-title">&laquo;Системное администрирование Linux&raquo;</h3>
+                    <p class="card-text">
+                        Эви Немет и др. Библия администратора Linux. Много
+                        страниц, но каждая оправдана.
+                    </p>
+                </article>
+            </div>
+
+            <h3 class="subsection-title">Для углубления</h3>
+            <div class="cards">
+                <article class="card">
+                    <h3 class="card-title">&laquo;UNIX. Профессиональное программирование&raquo;</h3>
+                    <p class="card-text">
+                        Ричард Стивенс. Поймёте, как всё работает &laquo;под капотом&raquo;.
+                        Сложная, но бесценная.
+                    </p>
+                </article>
+                <article class="card">
+                    <h3 class="card-title">&laquo;TCP/IP. Иллюстрированный курс&raquo;</h3>
+                    <p class="card-text">
+                        Кевин Фолл, Ричард Стивенс. Лучший способ понять,
+                        что происходит с пакетом в сети.
+                    </p>
+                </article>
+                <article class="card">
+                    <h3 class="card-title">&laquo;Site Reliability Engineering&raquo;</h3>
+                    <p class="card-text">
+                        Google. Про то, как строить надёжные системы
+                        и реагировать на инциденты.
+                    </p>
+                </article>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Онлайн-курсы и платформы</h2>
+            <p class="section-text">
+                Курсы хороши структурированным маршрутом. Но помните: без практики
+                они дают только иллюзию знания.
+            </p>
+
+            <table class="compare-table">
+                <thead>
+                    <tr>
+                        <th class="th-feature">Платформа</th>
+                        <th class="th-windows">Тематика</th>
+                        <th class="th-linux">Язык / Цена</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="td-feature">Stepik</td>
+                        <td>Linux, сети, Python, DevOps</td>
+                        <td>RU / бесплатно и платно</td>
+                    </tr>
+                    <tr>
+                        <td class="td-feature">Coursera</td>
+                        <td>Сети, безопасность, облака</td>
+                        <td>EN, RU / подписка</td>
+                    </tr>
+                    <tr>
+                        <td class="td-feature">edX</td>
+                        <td>Университетские курсы по CS</td>
+                        <td>EN / бесплатно и платно</td>
+                    </tr>
+                    <tr>
+                        <td class="td-feature">Linux Foundation</td>
+                        <td>Официальные курсы по Linux</td>
+                        <td>EN / платно</td>
+                    </tr>
+                    <tr>
+                        <td class="td-feature">Kodekloud</td>
+                        <td>DevOps, Kubernetes, Docker</td>
+                        <td>EN / подписка</td>
+                    </tr>
+                    <tr>
+                        <td class="td-feature">YouTube</td>
+                        <td>Разное, от новичка до продакшена</td>
+                        <td>RU, EN / бесплатно</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3 class="subsection-title">Проверенные YouTube-каналы</h3>
+            <ul class="skills-list">
+                <li class="skills-item">
+                    <strong>Владимир Дронов</strong> &mdash; Linux, сети, безопасность (RU).
+                </li>
+                <li class="skills-item">
+                    <strong>OTUS</strong> &mdash; записи вебинаров по администрированию (RU).
+                </li>
+                <li class="skills-item">
+                    <strong>NetworkChuck</strong> &mdash; сети и кибербезопасность (EN).
+                </li>
+                <li class="skills-item">
+                    <strong>TechWorld with Nana</strong> &mdash; Docker, K8s, DevOps (EN).
+                </li>
+                <li class="skills-item">
+                    <strong>DistroTube</strong> &mdash; обзоры и обзоры Linux-дистрибутивов (EN).
+                </li>
+            </ul>
+        </section>
+
+        <section class="section section-alt">
+            <h2 class="section-title">Официальная документация</h2>
+            <p class="section-text">
+                Когда Google не помогает &mdash; открывайте официальные доки.
+                Они скучные, но точные. Настоящий администратор проводит
+                в них больше времени, чем в Stack Overflow.
+            </p>
+
+            <ul class="links-list">
+                <li class="links-item">
+                    <a class="doc-link" target="_blank" href="https://learn.microsoft.com/ru-ru/windows-server/">
+                        Microsoft Learn &mdash; документация Windows Server
+                    </a>
+                </li>
+                <li class="links-item">
+                    <a class="doc-link" target="_blank" href="https://ubuntu.com/server/docs">
+                        Ubuntu Server Documentation
+                    </a>
+                </li>
+                <li class="links-item">
+                    <a class="doc-link" target="_blank" href="https://www.debian.org/doc/">
+                        Debian Administrator's Handbook
+                    </a>
+                </li>
+                <li class="links-item">
+                    <a class="doc-link" target="_blank" href="https://docs.redhat.com/">
+                        Red Hat Product Documentation
+                    </a>
+                </li>
+                <li class="links-item">
+                    <a class="doc-link" target="_blank" href="https://docs.docker.com/">
+                        Docker Documentation
+                    </a>
+                </li>
+                <li class="links-item">
+                    <a class="doc-link" target="_blank" href="https://kubernetes.io/docs/">
+                        Kubernetes Documentation
+                    </a>
+                </li>
+                <li class="links-item">
+                    <a class="doc-link" target="_blank" href="https://docs.ansible.com/">
+                        Ansible Documentation
+                    </a>
+                </li>
+            </ul>
+
+            <p class="note">
+                <ins>Совет:</ins> добавьте эти ссылки в закладки браузера с тегами
+                &laquo;docs/linux&raquo;, &laquo;docs/win&raquo;, &laquo;docs/net&raquo; &mdash; так вы найдёте нужное за секунды.
+            </p>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Сообщества и форумы</h2>
+            <p class="section-text">
+                Один правильный вопрос на форуме экономит дни самостоятельных
+                поисков. Но помните: сначала спросите Google, потом людей.
+            </p>
+
+            <div class="cards">
+                <article class="card">
+                    <h3 class="card-title">Stack Overflow</h3>
+                    <p class="card-text">
+                        Главный технический Q&A. Английский, строгие модераторы,
+                        миллион ответов на любую тему.
+                    </p>
+                </article>
+                <article class="card">
+                    <h3 class="card-title">Server Fault</h3>
+                    <p class="card-text">
+                        Раздел Stack Exchange для системных администраторов.
+                        Вопросы про серверы, сети, мониторинг.
+                    </p>
+                </article>
+                <article class="card">
+                    <h3 class="card-title">Reddit</h3>
+                    <p class="card-text">
+                        Сабреддиты <code>r/sysadmin</code>, <code>r/linuxadmin</code>,
+                        <code>r/homelab</code>. Много живого опыта.
+                    </p>
+                </article>
+                <article class="card">
+                    <h3 class="card-title">Хабр (Habr)</h3>
+                    <p class="card-text">
+                        Русскоязычное сообщество. Глубокие статьи по администрированию
+                        и DevOps.
+                    </p>
+                </article>
+                <article class="card">
+                    <h3 class="card-title">Telegram-чаты</h3>
+                    <p class="card-text">
+                        Множество чатов по Linux, Docker, K8s. Быстрые
+                        ответы, живое общение.
+                    </p>
+                </article>
+                <article class="card">
+                    <h3 class="card-title">GitHub</h3>
+                    <p class="card-text">
+                        Читайте чужой код. Форки, issues, pull requests &mdash;
+                        лучший способ учиться у практиков.
+                    </p>
+                </article>
+            </div>
+        </section>
+
+        <section class="section section-alt">
+            <h2 class="section-title">Практические площадки</h2>
+            <p class="section-text">
+                Теория без практики мертва. Вот где можно &laquo;поломать&raquo; систему
+                безопасно, не рискуя рабочим сервером.
+            </p>
+
+            <h3 class="subsection-title">Домашняя лаборатория</h3>
+            <ul class="osi-list">
+                <li class="osi-item"><span class="osi-num">VB</span> VirtualBox &mdash; бесплатно, кроссплатформенно
+                </li>
+                <li class="osi-item"><span class="osi-num">PVE</span> Proxmox VE &mdash; если есть отдельный сервер</li>
+                <li class="osi-item"><span class="osi-num">HV</span> Hyper-V &mdash; встроен в Windows Pro</li>
+                <li class="osi-item"><span class="osi-num">VM</span> VMware Workstation Player &mdash; бесплатно для
+                    личного использования</li>
+            </ul>
+
+            <h3 class="subsection-title">Онлайн-лаборатории</h3>
+            <div class="cards">
+                <article class="card">
+                    <h3 class="card-title">TryHackMe</h3>
+                    <p class="card-text">
+                        Интерактивные задания по кибербезопасности.
+                        Есть бесплатный контент для новичков.
+                    </p>
+                </article>
+                <article class="card">
+                    <h3 class="card-title">Hack The Box</h3>
+                    <p class="card-text">
+                        Для тех, кто уже знаком с основами. Много
+                        реальных сценариев пентеста.
+                    </p>
+                </article>
+                <article class="card">
+                    <h3 class="card-title">Katacoda</h3>
+                    <p class="card-text">
+                        Интерактивные курсы по DevOps прямо в браузере.
+                        Без установки &mdash; всё в песочнице.
+                    </p>
+                </article>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Профессиональные сертификации</h2>
+            <p class="section-text">
+                Сертификат &mdash; не самоцель, но хороший ориентир в обучении
+                и весомый плюс в резюме. Вот основные направления.
+            </p>
+
+            <h3 class="subsection-title">Linux</h3>
+            <ul class="skills-list">
+                <li class="skills-item"><strong>LPIC-1 / LPIC-2</strong> &mdash; классика от Linux Professional
+                    Institute.</li>
+                <li class="skills-item"><strong>RHCSA / RHCE</strong> &mdash; сертификаты Red Hat, очень ценятся в
+                    корпорациях.</li>
+                <li class="skills-item"><strong>Linux Foundation Certified SysAdmin (LFCS)</strong> &mdash;
+                    дистрибутив-независимый.</li>
+            </ul>
+
+            <h3 class="subsection-title">Windows</h3>
+            <ul class="skills-list">
+                <li class="skills-item"><strong>AZ-104</strong> &mdash; Microsoft Azure Administrator.</li>
+                <li class="skills-item"><strong>MS-102</strong> &mdash; Microsoft 365 Administrator.</li>
+                <li class="skills-item"><strong>Windows Server Hybrid Administrator</strong> &mdash; новый гибридный
+                    сертификат.</li>
+            </ul>
+
+            <h3 class="subsection-title">Сети и безопасность</h3>
+            <ul class="skills-list">
+                <li class="skills-item"><strong>CCNA</strong> &mdash; базовый сетевой сертификат от Cisco.</li>
+                <li class="skills-item"><strong>CompTIA Network+ / Security+</strong> &mdash; vendor-neutral,
+                    международные.</li>
+                <li class="skills-item"><strong>OSCP</strong> &mdash; продвинутый сертификат по пентесту.</li>
+            </ul>
+
+            <h3 class="subsection-title">Облака и DevOps</h3>
+            <ul class="skills-list">
+                <li class="skills-item"><strong>AWS Certified Solutions Architect</strong> &mdash; самый востребованный.
+                </li>
+                <li class="skills-item"><strong>CKA / CKAD</strong> &mdash; сертификаты по Kubernetes.</li>
+                <li class="skills-item"><strong>HashiCorp Terraform Associate</strong> &mdash; IaC-инструмент №1.</li>
+            </ul>
+
+            <blockquote class="quote">
+                &laquo;Сертификат &mdash; это не финиш, а веха. Он подтверждает,
+                что вы умеете учиться, но не заменяет практику.&raquo;
+            </blockquote>
+        </section>
+
+        <section class="section section-alt">
+            <h2 class="section-title">Словарь терминов</h2>
+            <p class="section-text">
+                Небольшая шпаргалка сокращений, которые встретятся в текстах
+                и на собеседованиях.
+            </p>
+
+            <table class="compare-table">
+                <thead>
+                    <tr>
+                        <th class="th-feature">Термин</th>
+                        <th class="th-windows">Расшифровка</th>
+                        <th class="th-linux">Что это</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="td-feature">IaC</td>
+                        <td>Infrastructure as Code</td>
+                        <td>Инфраструктура, описанная кодом</td>
+                    </tr>
+                    <tr>
+                        <td class="td-feature">CI/CD</td>
+                        <td>Continuous Integration / Delivery</td>
+                        <td>Автоматизация сборки и выкатки</td>
+                    </tr>
+                    <tr>
+                        <td class="td-feature">RPO / RTO</td>
+                        <td>Recovery Point / Time Objective</td>
+                        <td>Требования к восстановлению данных</td>
+                    </tr>
+                    <tr>
+                        <td class="td-feature">SLA</td>
+                        <td>Service Level Agreement</td>
+                        <td>Соглашение об уровне сервиса</td>
+                    </tr>
+                    <tr>
+                        <td class="td-feature">MFA</td>
+                        <td>Multi-Factor Authentication</td>
+                        <td>Многофакторная аутентификация</td>
+                    </tr>
+                    <tr>
+                        <td class="td-feature">VPN</td>
+                        <td>Virtual Private Network</td>
+                        <td>Защищённый туннель между узлами</td>
+                    </tr>
+                    <tr>
+                        <td class="td-feature">SSH</td>
+                        <td>Secure Shell</td>
+                        <td>Протокол удалённого доступа</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Завершение курса</h2>
+            <p class="section-text">
+                Вы прошли весь курс &mdash; от &laquo;кто такой сисадмин&raquo; до автоматизации
+                и CI/CD. Это не финиш, а старт. Настоящее обучение начинается
+                там, где заканчивается теория: за терминалом, с реальной системой,
+                которую можно сломать и восстановить.
+            </p>
+
+            <p class="section-text">
+                Возвращайтесь к главам, перечитывайте, делайте заметки. Делитесь
+                знаниями с другими &mdash; лучший способ закрепить материал.
+            </p>
+
+            <p class="note">
+                <strong>Удачи в обучении!</strong> И помните: хороший администратор
+                учится всю жизнь, потому что технологии не стоят на месте.
+            </p>
+        </section>
+
+        <section class="section section-alt">
+            <h2 class="section-title">Навигация</h2>
+            <div class="chapter-nav">
+                <a class="chapter-link chapter-link-prev" href="./automation.html">
+                    <span class="chapter-label">&larr; Предыдущая глава</span>
+                    <span class="chapter-title">Скриптинг и автоматизация</span>
+                </a>
+                <a class="chapter-link chapter-link-next" href="./index.html">
+                    <span class="chapter-label">Вернуться к началу &rarr;</span>
+                    <span class="chapter-title">Главная страница курса</span>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer" id="contacts">
+        <div class="container footer-grid">
+            <div class="footer-column">
+                <h4 class="footer-title">О проекте</h4>
+                <p class="footer-text">
+                    Учебные заметки по системному администрированию.
+                    Материалы предоставлены в образовательных целях.
+                </p>
+            </div>
+            <div class="footer-column">
+                <h4 class="footer-title">Разделы</h4>
+                <ul class="footer-list">
+                    <li class="footer-item"><a class="footer-link" href="./index.html">Главная</a></li>
+                    <li class="footer-item"><a class="footer-link" href="./automation.html">Автоматизация</a></li>
+                    <li class="footer-item"><a class="footer-link" href="./resources.html">Ресурсы</a></li>
+                    <li class="footer-item"><a class="footer-link" href="./gallery.html">Галерея</a></li>
+                    <li class="footer-item"><a class="footer-link" href="./auth.html">Вход</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4 class="footer-title">Связь</h4>
+                <p class="footer-text">
+                    Email: <a class="footer-link" href="mailto:admin@example.com">admin@example.com</a>
+                </p>
+            </div>
+            <div class="footer-bottom">
+                <p class="copyright">&copy; 2026 SysAdmin Notes. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

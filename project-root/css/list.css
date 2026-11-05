@@ -1,0 +1,83 @@
+.skills-list {
+    counter-reset: skills-counter;
+    margin-bottom: 20px;
+}
+
+.skills-item {
+    counter-increment: skills-counter;
+    position: relative;
+    padding-left: 38px;
+    margin-bottom: 14px;
+    font-size: 15px;
+}
+
+.skills-item::before {
+    content: counter(skills-counter);
+    position: absolute;
+    left: 0;
+    top: 2px;
+    width: 24px;
+    height: 24px;
+    background-color: #e0f2fe;
+    color: var(--color-blue);
+    font-weight: 700;
+    font-size: 13px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.osi-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+.osi-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 12px 18px;
+    background-color: #ffffff;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--color-border);
+    font-weight: 500;
+}
+
+.osi-num {
+    background-color: var(--color-primary);
+    color: #ffffff;
+    width: 28px;
+    height: 28px;
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 14px;
+}
+
+.backup-list {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.backup-item {
+    flex: 1;
+    background-color: #ffffff;
+    padding: 24px;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--color-border);
+    text-align: center;
+    box-shadow: var(--shadow-sm);
+}
+
+.backup-item strong {
+    display: block;
+    font-size: 32px;
+    color: var(--color-accent);
+    margin-bottom: 6px;
+}

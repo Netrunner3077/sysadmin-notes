@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/main.css">
+    <title>Информационная безопасность &mdash; SysAdmin Notes</title>
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="container">
+            <div class="logo">
+                <span class="logo-mark">SA</span>
+                <span class="logo-text">SysAdmin Notes</span>
+            </div>
+            
+            <input type="checkbox" id="menu-toggle" class="menu-toggle" hidden>
+            <label for="menu-toggle" class="burger" aria-label="Открыть меню">
+                <span></span><span></span><span></span>
+            </label>
+            
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li class="nav-item"><a class="nav-link" href="./index.html">Главная</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./intro.html">Введение</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./os.html">ОС</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./networks.html">Сети</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./tools.html">Инструменты</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./security.html">Безопасность</a></li>
+                    <li class="nav-item nav-item-dropdown">
+                        <a class="nav-link nav-link-dropdown" href="#more" aria-haspopup="true" aria-expanded="false">
+                            Ещё <span class="dropdown-arrow">&dtrif;</span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-link" href="./backup.html">Резервное копирование</a></li>
+                            <li><a class="dropdown-link" href="./virtualization.html">Виртуализация</a></li>
+                            <li><a class="dropdown-link" href="./automation.html">Автоматизация</a></li>
+                            <li><a class="dropdown-link" href="./resources.html">Ресурсы</a></li>
+                            <li><a class="dropdown-link" href="./gallery.html">Галерея</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="./auth.html">Вход</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="content">
+        <section class="hero">
+            <h1 class="hero-title">Информационная безопасность</h1>
+            <p class="hero-subtitle">
+                Как защитить инфраструктуру от угроз: файрволы, аутентификация,
+                шифрование и аудит. Глава 5 учебного курса.
+            </p>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Почему безопасность &mdash; это процесс</h2>
+            <p class="section-text">
+                Безопасность &mdash; не кнопка, которую нажимают один раз. Это непрерывный процесс:
+                обновления, мониторинг, реакция на инциденты. Даже самая защищённая система
+                устаревает в тот же день, когда перестаёт обслуживаться. Администратор должен
+                мыслить как злоумышленник &mdash; иначе он проиграет.
+            </p>
+
+            <div class="cards">
+                <article class="card">
+                    <h3 class="card-title">Конфиденциальность</h3>
+                    <p class="card-text">
+                        Данные доступны только тем, кому положено. Шифрование,
+                        права доступа, аутентификация.
+                    </p>
+                </article>
+                <article class="card">
+                    <h3 class="card-title">Целостность</h3>
+                    <p class="card-text">
+                        Данные не изменены незаметно. Контрольные суммы, подписи,
+                        журналирование.
+                    </p>
+                </article>
+                <article class="card">
+                    <h3 class="card-title">Доступность</h3>
+                    <p class="card-text">
+                        Сервисы работают, когда нужны. Резервирование, защита
+                        от DDoS, отказоустойчивость.
+                    </p>
+                </article>
+            </div>
+
+            <blockquote class="quote">
+                &laquo;Безопасность &mdash; это не продукт, а процесс. Нельзя купить
+                безопасность, можно только поддерживать её.&raquo;
+            </blockquote>
+        </section>
+
+        <section class="section section-alt">
+            <h2 class="section-title">Модель угроз</h2>
+            <p class="section-text">
+                Прежде чем защищаться, нужно понять &mdash; от кого. Угрозы бывают внешние
+                и внутренние, случайные и намеренные. Самая частая уязвимость &mdash; не
+                хакер, а сотрудник, который открыл вложение из письма.
+            </p>
+
+            <h3 class="subsection-title">Основные типы атак</h3>
+            <ul class="skills-list">
+                <li class="skills-item">
+                    <strong>Фишинг</strong> &mdash; поддельные письма и сайты, выманивающие
+                    учётные данные.
+                </li>
+                <li class="skills-item">
+                    <strong>Brute-force</strong> &mdash; перебор паролей по словарю или маске.
+                </li>
+                <li class="skills-item">
+                    <strong>SQL-инъекции</strong> &mdash; внедрение кода в запросы к базе данных.
+                </li>
+                <li class="skills-item">
+                    <strong>DDoS</strong> &mdash; перегрузка сервиса массовыми запросами.
+                </li>
+                <li class="skills-item">
+                    <strong>MITM</strong> &mdash; перехват трафика между двумя сторонами.
+                </li>
+                <li class="skills-item">
+                    <strong>Социальная инженерия</strong> &mdash; манипуляция людьми, а не машинами.
+                </li>
+                <li class="skills-item">
+                    <strong>Ransomware</strong> &mdash; шифрование данных с требованием выкупа.
+                </li>
+            </ul>
+
+            <h3 class="subsection-title">Принцип наименьших привилегий</h3>
+            <p class="section-text">
+                Пользователь должен иметь ровно столько прав, сколько нужно для работы &mdash;
+                и ни одним больше. Это золотое правило, к которому возвращаются снова и снова.
+                Не давайте никому <code>root</code> или <code>Administrator</code> &laquo;на всякий случай&raquo;.
+            </p>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Файрволы</h2>
+            <p class="section-text">
+                Файрвол (межсетевой экран) фильтрует трафик по правилам: пропускает нужное,
+                блокирует подозрительное. Работает на разных уровнях &mdash; от сетевого до
+                прикладного.
+            </p>
+
+            <h3 class="subsection-title">Основные принципы</h3>
+            <ul class="osi-list">
+                <li class="osi-item"><span class="osi-num">1</span> Разрешать только то, что явно нужно</li>
+                <li class="osi-item"><span class="osi-num">2</span> Запрещать всё остальное по умолчанию</li>
+                <li class="osi-item"><span class="osi-num">3</span> Логировать отброшенные пакеты</li>
+                <li class="osi-item"><span class="osi-num">4</span> Регулярно пересматривать правила</li>
+            </ul>
+
+            <h3 class="subsection-title">Инструменты в Windows и Linux</h3>
+            <table class="compare-table">
+                <thead>
+                    <tr>
+                        <th class="th-feature">Инструмент</th>
+                        <th class="th-windows">Платформа</th>
+                        <th class="th-linux">Особенности</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="td-feature">Windows Defender Firewall</td>
+                        <td>Windows</td>
+                        <td>Встроенный, GUI + PowerShell</td>
+                    </tr>
+                    <tr>
+                        <td class="td-feature">iptables</td>
+                        <td>Linux</td>
+                        <td>Классика, мощно, но сложно</td>
+                    </tr>
+                    <tr>
+                        <td class="td-feature">nftables</td>
+                        <td>Linux</td>
+                        <td>Современная замена iptables</td>
+                    </tr>
+                    <tr>
+                        <td class="td-feature">ufw</td>
+                        <td>Linux</td>
+                        <td>Простая обёртка над iptables</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="section section-alt">
+            <h2 class="section-title">Аутентификация и доступ</h2>
+            <p class="section-text">
+                Аутентификация отвечает на вопрос &laquo;кто вы?&raquo;. Авторизация &mdash; &laquo;что вам можно?&raquo;.
+                Эти два понятия всегда идут рядом: сначала подтверждаем личность, потом
+                проверяем права.
+            </p>
+
+            <h3 class="subsection-title">Факторы аутентификации</h3>
+            <ul class="skills-list">
+                <li class="skills-item">
+                    <strong>Знание</strong> &mdash; пароль, PIN, секретный вопрос.
+                </li>
+                <li class="skills-item">
+                    <strong>Владение</strong> &mdash; смартфон, токен, смарт-карта.
+                </li>
+                <li class="skills-item">
+                    <strong>Биометрия</strong> &mdash; отпечаток пальца, лицо, сетчатка.
+                </li>
+            </ul>
+
+            <p class="section-text">
+                <strong>MFA</strong> (многофакторная аутентификация) объединяет два и более
+                факторов. Это на порядок надёжнее пароля и должно быть стандартом
+                для любого административного доступа.
+            </p>
+
+            <h3 class="subsection-title">SSH-ключи вместо паролей</h3>
+            <p class="section-text">
+                В Linux-мире стандарт &mdash; вход по SSH-ключам. Пара &laquo;приватный + публичный&raquo;
+                надёжнее и удобнее пароля. Приватный ключ никогда не покидает вашу машину,
+                а на сервере хранится только публичная часть.
+            </p>
+
+            <pre class="code-block"><code># Сгенерировать пару ключей (ed25519 — современный алгоритм)
+ssh-keygen -t ed25519 -C "admin@example.com"
+
+# Скопировать публичный ключ на сервер
+ssh-copy-id user@server
+
+# Зайти без пароля
+ssh user@server
+
+# Отключить вход по паролю в /etc/ssh/sshd_config:
+PasswordAuthentication no</code></pre>
+
+            <p class="note">
+                <ins>Совет:</ins> если пользуетесь паролями &mdash; храните их в менеджере
+                (Bitwarden, KeePassXC) и включайте MFA. Один и тот же пароль на разных
+                сайтах &mdash; самая частая причина массовых утечек.
+            </p>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Шифрование</h2>
+            <p class="section-text">
+                Шифрование превращает читаемые данные в нечитаемые &mdash; и обратно, но
+                только при наличии ключа. Без него злоумышленник, перехвативший трафик,
+                увидит лишь случайный набор символов.
+            </p>
+
+            <h3 class="subsection-title">Симметричное и асимметричное</h3>
+            <div class="cards">
+                <article class="card">
+                    <h3 class="card-title">Симметричное</h3>
+                    <p class="card-text">
+                        Один ключ для шифрования и расшифровки. Быстро, но нужно
+                        как-то безопасно передать ключ. Пример: AES.
+                    </p>
+                </article>
+                <article class="card">
+                    <h3 class="card-title">Асимметричное</h3>
+                    <p class="card-text">
+                        Пара ключей: публичный шифрует, приватный расшифровывает.
+                        Медленнее, но решает проблему обмена. Пример: RSA, ECC.
+                    </p>
+                </article>
+                <article class="card">
+                    <h3 class="card-title">Гибридное</h3>
+                    <p class="card-text">
+                        Асимметрикой обмениваются симметричным ключом сессии.
+                        Так работает TLS и весь HTTPS.
+                    </p>
+                </article>
+            </div>
+
+            <h3 class="subsection-title">Где шифрование применяется</h3>
+            <ul class="osi-list">
+                <li class="osi-item"><span class="osi-num">TLS</span> HTTPS, почта, VPN &mdash; защита трафика</li>
+                <li class="osi-item"><span class="osi-num">LUKS</span> Полнодисковое шифрование в Linux</li>
+                <li class="osi-item"><span class="osi-num">BitLocker</span> Полнодисковое шифрование в Windows</li>
+                <li class="osi-item"><span class="osi-num">GPG</span> Шифрование файлов и подписи</li>
+                <li class="osi-item"><span class="osi-num">SSH</span> Шифрование удалённых сессий</li>
+            </ul>
+        </section>
+
+        <section class="section section-alt">
+            <h2 class="section-title">Аудит и логирование</h2>
+            <p class="section-text">
+                Если что-то случилось &mdash; вы должны узнать об этом из логов, а не от
+                журналистов. Логи &mdash; глаза администратора. Без них инциденты расследуются
+                &laquo;по ощущениям&raquo;.
+            </p>
+
+            <h3 class="subsection-title">Что логировать обязательно</h3>
+            <ul class="skills-list">
+                <li class="skills-item">Входы и выходы пользователей (успешные и неудачные).</li>
+                <li class="skills-item">Изменения в правах доступа и учётных записях.</li>
+                <li class="skills-item">Запуск и остановка служб.</li>
+                <li class="skills-item">Работа с конфиденциальными файлами.</li>
+                <li class="skills-item">Изменения в правилах файрвола.</li>
+                <li class="skills-item">Ошибки приложений и системные сбои.</li>
+            </ul>
+
+            <h3 class="subsection-title">Инструменты</h3>
+            <table class="compare-table">
+                <thead>
+                    <tr>
+                        <th class="th-feature">Задача</th>
+                        <th class="th-windows">Windows</th>
+                        <th class="th-linux">Linux</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="td-feature">Просмотр событий</td>
+                        <td>Event Viewer</td>
+                        <td>journalctl</td>
+                    </tr>
+                    <tr>
+                        <td class="td-feature">Системные логи</td>
+                        <td>C:\Windows\Logs</td>
+                        <td>/var/log</td>
+                    </tr>
+                    <tr>
+                        <td class="td-feature">Аудит доступа</td>
+                        <td>Group Policy</td>
+                        <td>auditd</td>
+                    </tr>
+                    <tr>
+                        <td class="td-feature">Централизация</td>
+                        <td>Windows Event Forwarding</td>
+                        <td>rsyslog, Graylog</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Базовая защита сервера</h2>
+            <p class="section-text">
+                Универсальный чек-лист, который стоит пройти на любом новом сервере &mdash;
+                независимо от того, Windows это или Linux.
+            </p>
+
+            <ol class="skills-list">
+                <li class="skills-item">Обновить ОС и всё установленное ПО.</li>
+                <li class="skills-item">Включить файрвол, оставить только нужные порты.</li>
+                <li class="skills-item">Сменить пароли по умолчанию, отключить лишние учётные записи.</li>
+                <li class="skills-item">Настроить SSH: только ключи, отключить root-логин.</li>
+                <li class="skills-item">Включить автоматические обновления безопасности.</li>
+                <li class="skills-item">Настроить резервное копирование (см. главу про бэкапы).</li>
+                <li class="skills-item">Установить системы мониторинга и оповещения.</li>
+                <li class="skills-item">Включить и проверить логирование.</li>
+                <li class="skills-item">Ограничить доступ по IP, где возможно.</li>
+                <li class="skills-item">Регулярно пересматривать правила и права.</li>
+            </ol>
+
+            <blockquote class="quote">
+                &laquo;Есть два типа администраторов: те, кого взломали, и те, кто ещё
+                об этом не знает. Разница лишь в скорости обнаружения.&raquo;
+            </blockquote>
+        </section>
+
+        <section class="section section-alt">
+            <h2 class="section-title">Практические команды</h2>
+            <p class="section-text">
+                Минимум, который стоит помнить наизусть для быстрой проверки состояния
+                безопасности системы.
+            </p>
+
+            <pre class="code-block"><code># Показать текущие правила файрвола
+sudo ufw status verbose          # Ubuntu/Debian
+sudo firewall-cmd --list-all     # RHEL/Fedora
+netsh advfirewall show allprofiles   # Windows
+
+# Проверить открытые порты и слушающие сервисы
+ss -tuln                         # Linux
+netstat -an                      # Windows
+
+# Показать последние входы в систему
+last                             # Linux
+lastb                            # неудачные попытки
+
+# Просмотреть журнал аутентификации
+sudo journalctl -u ssh           # Linux
+# Event Viewer → Windows Logs → Security   # Windows
+
+# Найти файлы с небезопасными правами
+find / -perm -o+w -type f 2>/dev/null</code></pre>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Навигация по главам</h2>
+            <div class="chapter-nav">
+                <a class="chapter-link chapter-link-prev" href="./tools.html">
+                    <span class="chapter-label">&larr; Предыдущая глава</span>
+                    <span class="chapter-title">Инструменты и утилиты</span>
+                </a>
+                <a class="chapter-link chapter-link-next" href="./backup.html">
+                    <span class="chapter-label">Следующая глава &rarr;</span>
+                    <span class="chapter-title">Резервное копирование</span>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer" id="contacts">
+        <div class="container footer-grid">
+            <div class="footer-column">
+                <h4 class="footer-title">О проекте</h4>
+                <p class="footer-text">
+                    Учебные заметки по системному администрированию.
+                    Материалы предоставлены в образовательных целях.
+                </p>
+            </div>
+            <div class="footer-column">
+                <h4 class="footer-title">Разделы</h4>
+                <ul class="footer-list">
+                    <li class="footer-item"><a class="footer-link" href="./index.html">Главная</a></li>
+                    <li class="footer-item"><a class="footer-link" href="./networks.html">Сети</a></li>
+                    <li class="footer-item"><a class="footer-link" href="./security.html">Безопасность</a></li>
+                    <li class="footer-item"><a class="footer-link" href="./tools.html">Инструменты</a></li>
+                    <li class="footer-item"><a class="footer-link" href="./gallery.html">Галерея</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4 class="footer-title">Связь</h4>
+                <p class="footer-text">
+                    Email: <a class="footer-link" href="mailto:admin@example.com">admin@example.com</a>
+                </p>
+            </div>
+            <div class="footer-bottom">
+                <p class="copyright">&copy; 2026 SysAdmin Notes. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

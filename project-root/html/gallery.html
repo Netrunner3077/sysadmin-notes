@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/main.css">
+    <title>Галерея &mdash; SysAdmin Notes</title>
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="container">
+            <div class="logo">
+                <span class="logo-mark">SA</span>
+                <span class="logo-text">SysAdmin Notes</span>
+            </div>
+
+            <input type="checkbox" id="menu-toggle" class="menu-toggle" hidden>
+            <label for="menu-toggle" class="burger" aria-label="Открыть меню">
+                <span></span><span></span><span></span>
+            </label>
+
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li class="nav-item"><a class="nav-link" href="./index.html">Главная</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./intro.html">Введение</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./os.html">ОС</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./networks.html">Сети</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./tools.html">Инструменты</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./security.html">Безопасность</a></li>
+                    <li class="nav-item nav-item-dropdown">
+                        <a class="nav-link nav-link-dropdown" href="#more" aria-haspopup="true" aria-expanded="false">
+                            Ещё <span class="dropdown-arrow">&dtrif;</span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-link" href="./backup.html">Резервное копирование</a></li>
+                            <li><a class="dropdown-link" href="./virtualization.html">Виртуализация</a></li>
+                            <li><a class="dropdown-link" href="./automation.html">Автоматизация</a></li>
+                            <li><a class="dropdown-link" href="./resources.html">Ресурсы</a></li>
+                            <li><a class="dropdown-link" href="./gallery.html">Галерея</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="./auth.html">Вход</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="content">
+        <section class="hero">
+            <h1 class="hero-title">Галерея</h1>
+            <p class="hero-subtitle">
+                Оборудование, схемы, интерфейсы и рабочие места системного администратора.
+                Всё, что помогает понять, как выглядит инфраструктура вживую.
+            </p>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Серверное оборудование</h2>
+            <p class="section-text">
+                Стойки, лезвийные серверы, СХД и системы охлаждения &mdash; физическая основа любой
+                инфраструктуры. Эти фотографии помогут представить, как выглядит работа с &laquo;железом&raquo;.
+            </p>
+
+            <div class="gallery">
+                <figure class="gallery-item">
+                    <img src="../img/rack.png" alt="Серверная стойка с оборудованием">
+                    <figcaption class="gallery-caption">Серверная стойка 42U</figcaption>
+                </figure>
+
+                <figure class="gallery-item">
+                    <img src="../img/blade.jpg" alt="Лезвийный сервер">
+                    <figcaption class="gallery-caption">Лезвийный сервер</figcaption>
+                </figure>
+
+                <figure class="gallery-item">
+                    <img src="../img/storage.jpg" alt="Система хранения данных">
+                    <figcaption class="gallery-caption">СХД с дисковыми полками</figcaption>
+                </figure>
+
+                <figure class="gallery-item">
+                    <img src="../img/switch.jpg" alt="Коммутатор">
+                    <figcaption class="gallery-caption">Управляемый коммутатор</figcaption>
+                </figure>
+            </div>
+        </section>
+
+        <section class="section section-alt">
+            <h2 class="section-title">Схемы и топологии</h2>
+            <p class="section-text">
+                Прежде чем собирать сеть, администратор рисует её схему. Ниже &mdash; типовые
+                топологии, которые встречаются в учебных и рабочих проектах.
+            </p>
+
+            <div class="gallery">
+                <figure class="gallery-item gallery-item-wide">
+                    <img src="../img/topology-star.jpg" alt="Топология звезда">
+                    <figcaption class="gallery-caption">Топология &laquo;звезда&raquo;</figcaption>
+                </figure>
+
+                <figure class="gallery-item">
+                    <img src="../img/topology-ring.jpg" alt="Топология кольцо">
+                    <figcaption class="gallery-caption">Топология &laquo;кольцо&raquo;</figcaption>
+                </figure>
+
+                <figure class="gallery-item">
+                    <img src="../img/client-server.jpg" alt="Схема клиент-сервер">
+                    <figcaption class="gallery-caption">Клиент-серверное взаимодействие</figcaption>
+                </figure>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Интерфейсы и рабочие места</h2>
+            <p class="section-text">
+                Консоль Linux, PowerShell в Windows, панели мониторинга &mdash; то, что сисадмин
+                видит каждый день.
+            </p>
+
+            <div class="gallery">
+                <figure class="gallery-item">
+                    <img src="../img/terminal.jpg" alt="Терминал Linux">
+                    <figcaption class="gallery-caption">Bash в Linux</figcaption>
+                </figure>
+
+                <figure class="gallery-item">
+                    <img src="../img/powershell.jpg" alt="PowerShell">
+                    <figcaption class="gallery-caption">PowerShell в Windows</figcaption>
+                </figure>
+
+                <figure class="gallery-item">
+                    <img src="../img/dashboard.jpg" alt="Панель мониторинга">
+                    <figcaption class="gallery-caption">Grafana-дашборд</figcaption>
+                </figure>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer" id="contacts">
+        <div class="container footer-grid">
+            <div class="footer-column">
+                <h4 class="footer-title">О проекте</h4>
+                <p class="footer-text">
+                    Учебные заметки по системному администрированию.
+                    Материалы предоставлены в образовательных целях.
+                </p>
+            </div>
+            <div class="footer-column">
+                <h4 class="footer-title">Разделы</h4>
+                <ul class="footer-list">
+                    <li class="footer-item"><a class="footer-link" href="./index.html">Главная</a></li>
+                    <li class="footer-item"><a class="footer-link" href="./intro.html">Введение</a></li>
+                    <li class="footer-item"><a class="footer-link" href="./tools.html">Инструменты</a></li>
+                    <li class="footer-item"><a class="footer-link" href="./gallery.html">Галерея</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4 class="footer-title">Связь</h4>
+                <p class="footer-text">
+                    Email: <a class="footer-link" href="mailto:admin@example.com">admin@example.com</a>
+                </p>
+            </div>
+            <div class="footer-bottom">
+                <p class="copyright">&copy; 2026 SysAdmin Notes. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
